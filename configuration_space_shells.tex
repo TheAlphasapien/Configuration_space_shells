@@ -25,7 +25,7 @@
 \maketitle
 
 \begin{abstract}
-Building on the signature emergence mechanism from rotational stress, we develop a radial shell decomposition of field configuration space that provides physical grounding for quantum branching and addresses the cosmological constant problem. We show that the monodromy obstruction naturally partitions configuration space into energy-labeled sectors (shells) that are topologically distinct and exhibit controlled decoherence. Each shell corresponds to a distinct ``branch'' in the Many Worlds sense, but with concrete physical content: shells are energy eigensectors of the Euclidean propagator, weighted by Boltzmann factors, and coupled via the rotation-induced anti-Hermitian potential. This framework resolves the vacuum energy discrepancy by identifying observable vacuum energy with a single dominant shell while the remaining $\sim 10^{120}$ degrees of freedom reside in orthogonal shells. We derive testable predictions including multi-scale interference patterns in double-slit experiments, energy-dependent decoherence rates, and shell-dependent quantum statistics. The formalism unifies path integral consistency requirements with Many Worlds branching structure through topological properties of the monodromy operator spectrum.
+Building on the signature emergence mechanism from rotational stress, we develop a radial shell decomposition of field configuration space that provides physical grounding for quantum branching and addresses the cosmological constant problem. We show that the rotation-induced monodromy obstruction requires a Picard–Lefschetz decomposition of the complexified path integral into a small set of Lefschetz thimbles (distinct relative homology classes). In stationary (KMS) settings, the resulting contributions align with the spectral (energy) decomposition of the theory, yielding an effective energy-organized stratification (``shells''). Standard open-system arguments then imply suppressed inter-shell coherences (controlled decoherence) in the energy basis. This framework resolves the vacuum energy discrepancy by identifying observable vacuum energy with a single dominant shell while the remaining $\sim 10^{120}$ degrees of freedom reside in orthogonal shells. We derive testable predictions including multi-scale interference patterns in double-slit experiments, energy-dependent decoherence rates, and shell-dependent quantum statistics. The formalism unifies path integral consistency requirements with quantum branching structure through topological properties of the monodromy operator spectrum.
 \end{abstract}
 
 \section{Introduction}
@@ -43,7 +43,7 @@ This raises profound questions about the structure of field configuration space:
 
 \item \textbf{Cosmological constant}: Why is the observed vacuum energy density $\sim 10^{-120}$ times smaller than naive quantum field theory predictions summing over all field modes?
 
-\item \textbf{Quantum branching}: How can Many Worlds interpretations (MWI) be given concrete physical content beyond asserting ``other branches exist''?
+\item \textbf{Quantum branching}: How can quantum measurement and decoherence be given concrete physical content through configuration space structure?
 \end{enumerate}
 
 This paper addresses all four questions through a unified framework: \textbf{radial shell decomposition of configuration space}.
@@ -57,30 +57,65 @@ The monodromy eigenvalues $\Lambda_n = e^{-\beta E_n} \cdot e^{i\beta\nu E_n}$ h
 \item \textbf{Angular}: $\theta_n = \beta\nu E_n$ (phase accumulation from rotation)
 \end{itemize}
 
-We propose that configuration space naturally decomposes into \textbf{radial shells} labeled by energy:
-\[
-\mathcal{C}_{\text{total}} = \bigoplus_{k=0}^{\infty} \mathcal{S}_k
-\]
-where shell $\mathcal{S}_k$ contains configurations with dominant energy support in range $[E_0\Lambda^k, E_0\Lambda^{k+1}]$.
+We propose that configuration space naturally decomposes into \textbf{radial shells} labeled by energy, realized as Lefschetz thimbles in the complexified configuration space. The shell decomposition emerges from the interplay of three established frameworks:
 
-\textbf{Physical interpretation}:
-\begin{itemize}
-\item Each shell is a distinct sector of configuration space
-\item Shells are topologically separated by energy barriers
-\item Inter-shell transitions mediated by rotation-induced coupling $\overline{V_I}$
-\item Observable physics dominated by lowest shell $\mathcal{S}_0$
-\item Higher shells $\mathcal{S}_k$ provide ``quantum corrections'' via virtual transitions
-\end{itemize}
+\begin{enumerate}
+\item The monodromy obstruction (forcing Picard-Lefschetz decomposition)
+\item KMS/thermal equilibrium (providing energy labeling)
+\item Open-system dynamics (suppressing inter-shell coherence)
+\end{enumerate}
+
+\subsection{Scope and Assumptions}
+
+Our analysis rests on the following conditions:
+
+\begin{enumerate}
+\item \textbf{KMS equilibrium}: The system is in thermal equilibrium at inverse temperature $\beta$, satisfying the Kubo-Martin-Schwinger condition.
+
+\item \textbf{Weak non-Hermiticity}: The rotation-induced term $i\bar{V}_I$ is a bounded perturbation of the Hermitian generator $H_0$, so eigenprojections deform analytically.
+
+\item \textbf{Generic non-degeneracy}: Energy eigenvalues are non-degenerate or have finite degeneracy, allowing spectral resolution.
+
+\item \textbf{Morse-Bott regularity}: Critical points of the complexified action are Morse-Bott, enabling standard Picard-Lefschetz analysis.
+\end{enumerate}
+
+The monodromy obstruction arises from violation of reflection positivity in the rotating case (detailed in \cite{SignatureEmergence}), necessitating the Lefschetz thimble decomposition rather than integration over the standard real contour.
+
+\begin{definition}[Configuration Space Shells]\label{def:shells}
+\textbf{Shells} are effective energy-organized sectors defined by spectral bands at fixed $\beta$, realized as Lefschetz thimble classes in the complexified configuration space.
+
+\textbf{Topologically distinct} refers to distinct relative homology classes of Lefschetz thimbles in the complexified space, not disjoint subsets of the real configuration space.
+
+The shell decomposition emerges from the interplay of:
+\begin{enumerate}
+\item The monodromy obstruction (forcing Picard-Lefschetz decomposition)
+\item KMS/thermal equilibrium (providing energy labeling)  
+\item Open-system dynamics (suppressing inter-shell coherence)
+\end{enumerate}
+\end{definition}
 
 \subsection{Main Results}
 
-\textbf{Theorem 1 (Shell Decomposition)}: For a system with monodromy operator exhibiting non-trivial complex spectrum, configuration space admits a well-defined radial shell decomposition with topologically stable labels.
+\begin{proposition}[Energy-Organized Thimbles Under KMS]\label{prop:main}
+Let $H_E = H_0 + i\bar{V}_I$ with $H_0 = H_0^\dagger$ time-independent, and define the Euclidean monodromy $M = e^{-\beta H_E}$. Assume:
+\begin{enumerate}[(i)]
+\item KMS equilibrium at inverse temperature $\beta$
+\item $\bar{V}_I$ is a small, bounded perturbation so that eigenprojections of $H_E$ are analytic deformations of those of $H_0$
+\item The action is Morse-Bott after complexification
+\end{enumerate}
 
-\textbf{Theorem 2 (Decoherence Structure)}: Shells $\mathcal{S}_k$ and $\mathcal{S}_{k'}$ decohere at rate $\Gamma_{k,k'} \propto \nu|E_k - E_{k'}|$, providing a physical basis for branch separation.
+Then the path integral admits a Lefschetz decomposition over thimbles attached to deformed critical submanifolds that inherit the energy labeling of $H_0$'s spectral bands. Moreover, in the open-system description with a stationary bath, the reduced dynamics suppresses off-diagonal terms between distinct bands, yielding controlled inter-band decoherence.
+\end{proposition}
 
-\textbf{Theorem 3 (Vacuum Energy Resolution)}: Observable vacuum energy density equals the energy density of the dominant shell $\mathcal{S}_0$, with remaining degrees of freedom in orthogonal shells contributing negligibly.
+\begin{proof}[Sketch]
+Picard-Lefschetz theory provides the thimble decomposition around complex critical sets (Morse-Bott). Analytic perturbation theory tracks those sets from $H_0$ to $H_E$. KMS/Lehmann furnish the energy band labeling in thermal equilibrium. Standard master equations yield decay of off-diagonals in the energy basis for stationary baths (pointer-basis/einselection) \cite{Zurek2003,BreuerPetruccione}.
+\end{proof}
 
-\textbf{Theorem 4 (Interference Structure)}: The double-slit experiment produces nested interference patterns with fringe spacing $\Delta y_k = \Delta y_0/\Lambda^k$ from shells $\mathcal{S}_k$.
+\textbf{Theorem 1 (Decoherence Structure)}: Shells $\mathcal{S}_k$ and $\mathcal{S}_{k'}$ decohere at rate $\Gamma_{k,k'} \propto \nu|E_k - E_{k'}|$, providing a physical basis for branch separation.
+
+\textbf{Theorem 2 (Vacuum Energy Resolution)}: Observable vacuum energy density equals the energy density of the dominant shell $\mathcal{S}_0$, with remaining degrees of freedom in orthogonal shells contributing negligibly.
+
+\textbf{Theorem 3 (Interference Structure)}: The double-slit experiment produces nested interference patterns with fringe spacing $\Delta y_k = \Delta y_0/\Lambda^k$ from shells $\mathcal{S}_k$.
 
 \section{Mathematical Framework}
 
@@ -132,25 +167,23 @@ r_n &= |\Lambda_n| = e^{-\beta E_n} \label{eq:radial}\\
 
 \subsection{Radial Shell Decomposition}
 
-\begin{definition}[Configuration Space Shell]
+\begin{definition}[Configuration Space Shell (Detailed)]
 For shell spacing parameter $\Lambda > 1$ and ground state energy $E_0$, the $k$-th radial shell is:
 \begin{equation}\label{eq:shell_def}
 \mathcal{S}_k = \left\{\phi \in \mathcal{C} : E_{\text{dominant}}[\phi] \in [E_0\Lambda^k, E_0\Lambda^{k+1}]\right\}
 \end{equation}
 where $E_{\text{dominant}}[\phi] = \arg\max_n |\langle n | \phi \rangle|^2 \cdot E_n$ is the energy of the dominant mode.
+
+Each shell $\mathcal{S}_k$ corresponds to a distinct relative homology class of Lefschetz thimbles in the complexified configuration space, attached to critical submanifolds with energy support in the range $[E_0\Lambda^k, E_0\Lambda^{k+1}]$.
 \end{definition}
 
 \begin{proposition}[Shell Partition]
-The configuration space admits a complete decomposition:
+The configuration space admits a decomposition over thimble classes:
 \begin{equation}\label{eq:partition}
 \mathcal{C}_{\text{total}} = \bigoplus_{k=0}^{\infty} \mathcal{S}_k
 \end{equation}
-with $\mathcal{S}_k \cap \mathcal{S}_{k'} = \emptyset$ for $k \neq k'$.
+where shells are distinguished by their energy labeling inherited from the KMS spectral decomposition.
 \end{proposition}
-
-\begin{proof}
-Every configuration $\phi$ has a unique dominant energy mode by the spectral theorem. The energy $E_n$ is continuous in $n$ and unbounded above, covering $[E_0, \infty)$. The logarithmic partition $[E_0\Lambda^k, E_0\Lambda^{k+1}]$ covers this range without overlap.
-\end{proof}
 
 \subsubsection{Hilbert Space Decomposition}
 
@@ -158,580 +191,247 @@ The field Hilbert space decomposes correspondingly:
 \begin{equation}\label{eq:hilbert_decomp}
 \mathcal{H}_{\text{total}} = \bigoplus_{k=0}^{\infty} \mathcal{H}_k
 \end{equation}
-where $\mathcal{H}_k = L^2(\mathcal{S}_k)$ is the space of square-integrable functions on shell $\mathcal{S}_k$.
 
-A general state has the form:
-\begin{equation}\label{eq:state_decomp}
-|\Psi\rangle = \sum_{k=0}^{\infty} c_k |\psi_k\rangle, \quad |\psi_k\rangle \in \mathcal{H}_k
+where $\mathcal{H}_k$ contains states with dominant support in shell $\mathcal{S}_k$. Projector onto shell $k$:
+\begin{equation}\label{eq:projector}
+\hat{P}_k = \sum_{n: E_n \in [E_0\Lambda^k, E_0\Lambda^{k+1}]} |n\rangle\langle n|
 \end{equation}
 
-with normalization $\sum_k |c_k|^2 = 1$.
+\subsection{Inter-Shell Dynamics}
 
-\subsection{Physical Interpretation}
+\subsubsection{Effective Hamiltonian}
 
-\subsubsection{Boltzmann Weighting}
-
-For a thermal state at temperature $T = 1/(\beta k_B)$:
-\begin{equation}\label{eq:boltzmann}
-|c_k|^2 \sim e^{-\beta E_k} \cdot g_k
-\end{equation}
-where $g_k$ is the density of states in shell $k$.
-
-For $d$-dimensional field theory, Weyl's law gives:
-\begin{equation}\label{eq:density_states}
-g_k \sim E_k^{(d-1)/2}
-\end{equation}
-
-\textbf{Competition}:
-\begin{itemize}
-\item Boltzmann suppression favors low energy (low $k$)
-\item Density of states favors high energy (high $k$)
-\item Peak at $k_* \sim d/(2\beta E_0 \ln\Lambda)$
-\end{itemize}
-
-\subsubsection{Observable vs. Hidden Sectors}
-
-\begin{definition}[Observable Sector]
-The observable sector is the shell with maximum contribution:
-\begin{equation}
-\mathcal{S}_{\text{obs}} = \mathcal{S}_{k_*} \text{ where } k_* = \arg\max_k |c_k|^2
-\end{equation}
-\end{definition}
-
-For typical quantum systems at laboratory temperatures:
-\begin{itemize}
-\item $k_* = 0$ or 1 (lowest energy shells dominate)
-\item $|c_0|^2 \gg |c_k|^2$ for $k > 0$ (exponential suppression)
-\end{itemize}
-
-\begin{definition}[Hidden Sector]
-The hidden sector comprises all shells except the observable one:
-\begin{equation}
-\mathcal{S}_{\text{hidden}} = \bigoplus_{k \neq k_*} \mathcal{S}_k
-\end{equation}
-\end{definition}
-
-\section{Topological Structure}
-
-\subsection{Energy Barriers Between Shells}
-
-\begin{theorem}[Shell Separation]\label{thm:shell_separation}
-Configurations in distinct shells $\mathcal{S}_k$ and $\mathcal{S}_{k'}$ cannot be continuously deformed into each other without crossing intermediate shells.
-\end{theorem}
-
-\begin{proof}
-Let $\phi^{(k)} \in \mathcal{S}_k$ and $\phi^{(k')} \in \mathcal{S}_{k'}$ with $k < k'$. Consider a continuous path $\phi(s)$ connecting them, $s \in [0,1]$, with $\phi(0) = \phi^{(k)}$ and $\phi(1) = \phi^{(k')}$.
-
-The dominant energy $E_{\text{dom}}[\phi(s)]$ is continuous in $s$ (by continuity of inner products). We have:
-\begin{align*}
-E_{\text{dom}}[\phi(0)] &\in [E_0\Lambda^k, E_0\Lambda^{k+1}]\\
-E_{\text{dom}}[\phi(1)] &\in [E_0\Lambda^{k'}, E_0\Lambda^{k'+1}]
-\end{align*}
-
-By the intermediate value theorem, for any $j$ with $k < j < k'$, there exists $s_j$ such that:
-\[
-E_{\text{dom}}[\phi(s_j)] \in [E_0\Lambda^j, E_0\Lambda^{j+1}]
-\]
-
-Therefore $\phi(s_j) \in \mathcal{S}_j$, and the path necessarily crosses all intermediate shells.
-\end{proof}
-
-\subsection{Winding Number and Phase Accumulation}
-
-\subsubsection{Total Winding}
-
-For a configuration supported on $N$ modes:
-\begin{equation}\label{eq:total_winding}
-W_{\text{total}} = \sum_{n=1}^N \frac{\theta_n}{2\pi} = \frac{\beta\nu}{2\pi}\sum_{n=1}^N E_n
-\end{equation}
-
-For the toy model with $E_n = n^2\pi^2/L^2$:
-\begin{equation}
-W_{\text{total}} \approx \frac{\beta\nu\pi^2}{2L^2} \cdot \frac{N^3}{3} \to \infty \text{ as } N \to \infty
-\end{equation}
-
-\textbf{Interpretation}: Infinite winding prevents smooth ``unwinding'' back to real axis—this is the topological obstruction to reflection positivity.
-
-\subsubsection{Shell-Dependent Winding}
-
-Each shell $\mathcal{S}_k$ contributes winding:
-\begin{equation}\label{eq:shell_winding}
-W_k = \sum_{E_n \in [E_0\Lambda^k, E_0\Lambda^{k+1}]} \frac{\beta\nu E_n}{2\pi}
-\end{equation}
-
-\textbf{Branch label}: The cumulative winding number serves as a topological quantum number:
-\begin{equation}
-n_{\text{branch}}(k) = \lfloor W_k \rfloor \in \mathbb{Z}
-\end{equation}
-
-\section{Inter-Shell Dynamics}
-
-\subsection{Coupling Between Shells}
-
-The rotation-induced anti-Hermitian potential $i\overline{V_I}$ couples different shells:
-\begin{equation}\label{eq:shell_coupling}
-H_{\text{total}} = \sum_k E_k |k\rangle\langle k| + \sum_{k,k'} V_{k,k'} |k\rangle\langle k'|
+The full Hamiltonian in shell basis:
+\begin{equation}\label{eq:H_shell}
+H = \sum_{k} E_k \hat{P}_k + \sum_{k,k'} V_{k,k'} \hat{P}_k \hat{P}_{k'}
 \end{equation}
 
 where:
-\begin{equation}\label{eq:coupling_matrix}
-V_{k,k'} = \langle k | i\overline{V_I} | k' \rangle \sim i\nu\sqrt{E_k E_{k'}}
+\begin{itemize}
+\item $E_k$ is the characteristic energy of shell $k$
+\item $V_{k,k'}$ is the inter-shell coupling induced by $\overline{V_I}$
+\end{itemize}
+
+\subsubsection{Coupling Strength}
+
+From perturbation theory in $\overline{V_I}$:
+\begin{equation}\label{eq:coupling}
+V_{k,k'} \propto \langle k | \overline{V_I} | k' \rangle \sim \nu(E_k - E_{k'})
 \end{equation}
 
-\subsection{Virtual Transitions}
+This coupling is:
+\begin{itemize}
+\item \textbf{Weak} for adjacent shells ($k' = k \pm 1$): $V_{k,k\pm 1} \sim \nu E_0(\Lambda - 1)$
+\item \textbf{Suppressed} for distant shells ($|k - k'| \gg 1$): $V_{k,k'} \sim e^{-|k-k'|}$
+\end{itemize}
 
-\subsubsection{Transition Amplitude}
+\subsection{Non-Exhaustion of Future Collapse Space}
 
-The amplitude for virtual transition $\mathcal{S}_k \to \mathcal{S}_{k'}$ over time $\tau$ is:
-\begin{equation}\label{eq:transition_amp}
-\mathcal{A}_{k \to k'} = \frac{V_{k,k'}}{E_{k'} - E_k} \left(1 - e^{i(E_{k'}-E_k)\tau/\hbar}\right)
-\end{equation}
+A natural concern is whether convergence onto dominant thimbles exhausts all future measurement possibilities. We show this does not occur through three mechanisms:
 
-For energy-conserving transitions (virtual processes):
+\subsubsection{Irrational Phase Winding}
+
+The shell amplitudes $\Lambda_n = e^{-\beta(1-i\nu)E_n}$ have angular parts $\theta_n = \beta\nu E_n$. For generic $\nu$ and spectra, the phases $\{\theta_n/2\pi\}$ are incommensurate, ensuring equidistribution mod $2\pi$ across higher shells. This prevents terminal phase-locking: the monodromy eigenvalues continue spiraling toward the origin rather than collapsing onto the positive real axis \cite{SignatureEmergence}. The system never settles into a single stationary configuration.
+
+\subsubsection{Stokes Crossings and Parameter Drift}
+
+Which thimbles contribute to the path integral is not fixed; it changes when control parameters cross Stokes surfaces \cite{BerryHowls1991}. In our framework, effective parameters include the rotation-induced phase (via $\nu$), the thermodynamic scale $\beta$, and the shell index through $E_k$. Slow drift or backreaction in these parameters produces intermittent re-entrance of dormant saddles: new channels can reappear even while the overall flow remains convergent. This is encoded through the time-dependent shell weights $c_k(\tau)$ and inter-shell couplings $V_{k,k'}$.
+
+The standard Stokes condition for thimble transitions is:
 \begin{equation}
-|\mathcal{A}_{k \to k'}|^2 \sim \frac{V_{k,k'}^2 \tau^2}{\hbar^2} \quad \text{for } \tau \lesssim \hbar/|E_{k'}-E_k|
+\text{Im}(S_\alpha - S_\beta) \in \pi\mathbb{Z}
 \end{equation}
 
-\subsubsection{Energy-Time Uncertainty}
+In our shell language, this manifests as time-dependent coefficients $c_k(\tau)$ and occasional reweighting bursts when $\Delta S_k$ crosses critical values.
 
-Maximum duration in off-shell state:
-\begin{equation}\label{eq:virtual_time}
-\Delta\tau_{\text{max}} = \frac{\hbar}{|E_{k'} - E_k|} \approx \frac{\hbar}{E_0(\Lambda^{k'} - \Lambda^k)}
-\end{equation}
+\subsubsection{Open-System Steady State}
 
-\textbf{Physical picture}: Higher shells accessed for shorter times, contributing to faster oscillations in configuration space.
+Because Minkowski time serves as the dissipative outlet resolving the monodromy obstruction, we are never in a closed Euclidean system. This openness implies ongoing noise/drive (however small) sustaining nonzero flux into subdominant shells via $V_{k,k'}$. The result is a stationary distribution concentrated on dominant channels but maintaining permanent thin tails—hence future ``collapse space'' is never exhausted, though subdominant outcomes are rare.
+
+This open-system character distinguishes our framework from closed quantum systems that would eventually thermalize completely.
 
 \subsection{Decoherence Between Shells}
 
-\begin{theorem}[Inter-Shell Decoherence]\label{thm:decoherence}
-Shells $\mathcal{S}_k$ and $\mathcal{S}_{k'}$ decohere at rate:
-\begin{equation}\label{eq:decoherence_rate}
-\Gamma_{k,k'} = \frac{2\nu}{\hbar}|E_k - E_{k'}|
-\end{equation}
-\end{theorem}
+\subsubsection{General Mechanism}
 
-\begin{proof}
-The off-diagonal elements of the reduced density matrix in the energy eigenbasis evolve as:
+In the open-system description with a stationary bath, standard decoherence theory \cite{Zurek2003, BreuerPetruccione} implies that off-diagonal density matrix elements between energy eigenstates decay due to dephasing. For our shell structure, this translates to suppression of coherences between shells $\mathcal{S}_k$ and $\mathcal{S}_{k'}$ with different characteristic energies.
+
+The energy basis is a natural pointer basis for stationary environments since energy eigenstates are stationary under free dynamics and environment couplings typically commute (or nearly commute) with the Hamiltonian.
+
+\subsubsection{Decoherence Rate Estimate}
+
+Following standard einselection arguments, the decoherence rate between shells is approximately:
+\begin{equation}\label{eq:decoherence}
+\Gamma_{k,k'} \sim \gamma |E_k - E_{k'}|
+\end{equation}
+
+where $\gamma$ is an environment-dependent coupling strength. In our framework, $\gamma \sim \nu$ since the rotation-induced term provides the primary coupling to the dissipative Minkowski outlet.
+
+For adjacent shells:
 \begin{equation}
-\rho_{k,k'}(t) = \rho_{k,k'}(0) \exp\left(-i(E_k - E_{k'})t/\hbar - \Gamma_{k,k'} t\right)
+\Gamma_{k,k+1} \sim \nu E_0(\Lambda - 1)
 \end{equation}
 
-The decoherence rate comes from the imaginary part of the effective Hamiltonian:
-\begin{align}
-\Gamma_{k,k'} &= 2\text{Im}(V_{k,k'})/\hbar\\
-&= 2\text{Im}(i\nu\sqrt{E_k E_{k'}})/\hbar\\
-&\approx \frac{2\nu}{\hbar}\sqrt{E_k E_{k'}}\\
-&\sim \frac{2\nu}{\hbar}|E_k - E_{k'}| \quad \text{for } |k - k'| \sim 1
-\end{align}
-\end{proof}
-
-\textbf{Consequences}:
-\begin{itemize}
-\item Same shell ($k = k'$): $\Gamma_{k,k} = 0$ (no self-decoherence)
-\item Adjacent shells: $\Gamma_{k,k+1} \sim \nu E_0 \Lambda^k/\hbar$ (weak)
-\item Distant shells: $\Gamma_{k,k'} \gg \nu E_0/\hbar$ for $|k - k'| \gg 1$ (strong)
-\end{itemize}
-
-\section{Connection to Many Worlds Interpretation}
-
-\subsection{Branch Structure}
-
-\begin{definition}[Quantum Branch]
-Each shell $\mathcal{S}_k$ constitutes one ``branch'' in the Many Worlds sense:
+For widely separated shells:
 \begin{equation}
-\text{Branch}_k \leftrightarrow \text{Shell } \mathcal{S}_k \leftrightarrow \text{Energy sector } [E_0\Lambda^k, E_0\Lambda^{k+1}]
-\end{equation}
-\end{definition}
-
-\textbf{Properties of branches}:
-\begin{enumerate}
-\item \textbf{Discrete}: Labeled by integer $k \in \mathbb{Z}_{\geq 0}$
-\item \textbf{Weighted}: Amplitude $c_k \sim e^{-\beta E_k/2}$ (Born rule)
-\item \textbf{Orthogonal}: Different energy eigenstates $\Rightarrow$ $\langle \mathcal{S}_k | \mathcal{S}_{k'} \rangle = \delta_{k,k'}$
-\item \textbf{Decoherent}: Inter-branch coherence decays at rate $\Gamma_{k,k'}$
-\end{enumerate}
-
-\subsection{Comparison with Standard MWI}
-
-\begin{center}
-\begin{tabular}{|l|l|l|}
-\hline
-\textbf{Aspect} & \textbf{Standard MWI} & \textbf{Shell Model}\\
-\hline
-Branch definition & Vague (``separate worlds'') & Energy sectors $\mathcal{S}_k$\\
-Branch labels & None specified & Integer $k$ (shell number)\\
-Branch weights & Born rule (postulated) & Boltzmann $e^{-\beta E_k}$ (derived)\\
-Decoherence & Environment interaction & Inter-shell coupling $V_{k,k'}$\\
-Observables & Undefined & Shell $\mathcal{S}_0$ dominates\\
-Testability & None & Multi-scale interference\\
-\hline
-\end{tabular}
-\end{center}
-
-\subsection{Resolution of MWI Objections}
-
-\subsubsection{Preferred Basis Problem}
-
-\textbf{Objection}: MWI requires a preferred basis to define branches, but quantum mechanics is basis-independent.
-
-\textbf{Resolution}: The energy eigenbasis is preferred by:
-\begin{itemize}
-\item Physical significance (energy is conserved)
-\item Topological stability (energy barriers between shells)
-\item Observational relevance (measurements typically project onto energy eigenstates)
-\end{itemize}
-
-\subsubsection{Probability Problem}
-
-\textbf{Objection}: If all branches are equally real, why do we experience one with probability given by Born rule?
-
-\textbf{Resolution}: Shells are \textit{not} equally real—they have Boltzmann weights $|c_k|^2 \sim e^{-\beta E_k}$. Observable sector (shell $\mathcal{S}_0$) has exponentially larger amplitude.
-
-\subsubsection{Ontological Extravagance}
-
-\textbf{Objection}: MWI multiplies entities beyond necessity (Occam's razor).
-
-\textbf{Resolution}: Shells are unavoidable consequences of:
-\begin{itemize}
-\item Quantum field theory (requires summing over all field modes)
-\item Path integral formulation (integrates over all configurations)
-\item Monodromy obstruction (complex eigenvalues organize into radial structure)
-\end{itemize}
-
-Not ``adding'' branches—recognizing structure already present in formalism.
-
-\section{Application: Double-Slit Experiment}
-
-\subsection{Shell Decomposition of Electron State}
-
-Consider electron with definite energy $E_{\text{electron}} = p^2/2m$ passing through double slit.
-
-\subsubsection{Initial State}
-
-At the source, electron is primarily in lowest shell:
-\begin{equation}\label{eq:initial_electron}
-|\Psi_{\text{init}}\rangle = c_0 |\psi_0\rangle + \sum_{k=1}^{k_{\max}} c_k |\psi_k\rangle
+\Gamma_{k,k'} \sim \nu E_0(\Lambda^{k'} - \Lambda^k) \quad \text{for } k' \gg k
 \end{equation}
 
-where:
-\begin{itemize}
-\item $|\psi_0\rangle$: Smooth wavepacket, long wavelength $\lambda_0 = h/p_0$
-\item $|\psi_k\rangle$: Higher momentum modes $p_k = \Lambda^k p_0$, wavelength $\lambda_k = \lambda_0/\Lambda^k$
-\item $|c_k|^2 \sim e^{-\beta E_k}$ with $E_k = p_k^2/2m = \Lambda^{2k} E_0$
-\end{itemize}
+\subsubsection{Born Rule from Shell Weights}
 
-\subsubsection{Wavepacket Width}
-
-The spatial extent in shell $k$:
-\begin{equation}
-\Delta x_k \sim \frac{\hbar}{p_k} = \frac{\hbar}{\Lambda^k p_0} = \frac{\Delta x_0}{\Lambda^k}
+The probability of observing configuration in shell $k$:
+\begin{equation}\label{eq:born_shell}
+P_k = \frac{e^{-2\beta E_k}}{\sum_{k'} e^{-2\beta E_{k'}}}
 \end{equation}
 
-Higher shells have \textit{narrower} spatial localization.
+This reproduces Born rule when expressed in terms of wavefunction amplitudes.
 
-\subsection{Interaction with Slits}
+\section{Physical Consequences}
 
-\subsubsection{Momentum Excitation}
+\subsection{Resolution of Cosmological Constant Problem}
 
-Slit width $a$ imposes spatial constraint, exciting high-momentum modes:
-\begin{equation}\label{eq:slit_excitation}
-\Delta p \sim \frac{\hbar}{a} \Rightarrow k_{\max} \sim \frac{\ln(p_0 a/\hbar)}{\ln\Lambda}
-\end{equation}
+\subsubsection{The Problem}
 
-After slits, state becomes:
-\begin{equation}
-|\Psi_{\text{slits}}\rangle = \sum_{k=0}^{k_{\max}} \left[c_k^{(A)} |\psi_k^A\rangle + c_k^{(B)} |\psi_k^B\rangle\right]
-\end{equation}
-
-where $|\psi_k^{A/B}\rangle$ denotes amplitude in shell $k$ passing through slit A or B.
-
-\subsection{Propagation and Interference}
-
-\subsubsection{Path Integral Decomposition}
-
-Amplitude to reach screen position $\mathbf{x}$:
-\begin{equation}\label{eq:amplitude_decomp}
-\mathcal{A}(\mathbf{x}) = \sum_{k=0}^{k_{\max}} \mathcal{A}_k(\mathbf{x})
-\end{equation}
-
-where:
-\begin{equation}
-\mathcal{A}_k(\mathbf{x}) = c_k^{(A)} e^{iS_k^{(A)}/\hbar} + c_k^{(B)} e^{iS_k^{(B)}/\hbar}
-\end{equation}
-
-and $S_k^{(A/B)}$ is the classical action from slit A/B in shell $k$.
-
-\subsubsection{Action Difference}
-
-For standard geometry (slit separation $d$, screen distance $L$, angle $\theta$ to detection point):
-\begin{equation}\label{eq:action_diff}
-\Delta S_k = S_k^{(A)} - S_k^{(B)} = p_k d \sin\theta = \Lambda^k p_0 d \sin\theta = \Lambda^k \Delta S_0
-\end{equation}
-
-\subsubsection{Fringe Structure}
-
-Constructive interference when:
-\begin{equation}
-\Delta S_k = 2\pi n \hbar \Rightarrow \Lambda^k \Delta S_0 = 2\pi n \hbar
-\end{equation}
-
-In terms of screen coordinate $y = L\tan\theta \approx L\theta$ for small angles:
-\begin{equation}\label{eq:fringe_spacing}
-\Delta y_k = \frac{\lambda_k L}{d} = \frac{h L}{p_k d} = \frac{\lambda_0 L}{d\Lambda^k} = \frac{\Delta y_0}{\Lambda^k}
-\end{equation}
-
-\textbf{Result}: Higher shells produce \textit{finer} fringes with spacing decreasing as $\Lambda^{-k}$.
-
-\subsection{Total Intensity Pattern}
-
-\begin{equation}\label{eq:total_intensity}
-I(\mathbf{x}) = |\mathcal{A}(\mathbf{x})|^2 = \left|\sum_{k=0}^{k_{\max}} \mathcal{A}_k(\mathbf{x})\right|^2
-\end{equation}
-
-Expanding:
-\begin{equation}
-I(\mathbf{x}) = \sum_k |\mathcal{A}_k|^2 + 2\sum_{k < k'} \text{Re}[\mathcal{A}_k^* \mathcal{A}_{k'}]
-\end{equation}
-
-\textbf{Two contributions}:
-\begin{enumerate}
-\item \textbf{Intra-shell interference}: $|\mathcal{A}_k|^2$ (interference within shell $k$)
-\item \textbf{Inter-shell interference}: $\text{Re}[\mathcal{A}_k^* \mathcal{A}_{k'}]$ (interference between shells)
-\end{enumerate}
-
-For $|c_0|^2 \gg |c_k|^2$ (typical case):
-\begin{equation}
-I(y) \approx |c_0|^2 |\mathcal{A}_0(y)|^2 \left[1 + \sum_{k=1}^{k_{\max}} \epsilon_k \cos(2\pi y/\Delta y_k)\right]
-\end{equation}
-
-where $\epsilon_k = 2|c_k|/|c_0| \ll 1$ is the modulation amplitude from shell $k$.
-
-\subsection{Testable Predictions}
-
-\subsubsection{Multi-Scale Fringe Pattern}
-
-\textbf{Prediction 1}: Dominant fringes at spacing $\Delta y_0 = \lambda_0 L/d$ (from shell $\mathcal{S}_0$).
-
-\textbf{Prediction 2}: Fine structure with spacing $\Delta y_k = \Delta y_0/\Lambda^k$ (from shells $\mathcal{S}_k$).
-
-\textbf{Observable signature}: Nested interference pattern with harmonic structure at wavelengths $\lambda_0, \lambda_0/\Lambda, \lambda_0/\Lambda^2, ...$
-
-\textbf{Test}: High-resolution single-photon detector scanning across fringes. Fourier transform of intensity should show peaks at $k_0, \Lambda k_0, \Lambda^2 k_0, ...$ where $k_0 = 2\pi/\Delta y_0$.
-
-\subsubsection{Energy-Dependent Decoherence}
-
-\textbf{Prediction}: Fringe visibility decreases with electron energy due to excitation of higher shells.
-
-Visibility of shell $k$ contribution:
-\begin{equation}
-V_k = V_0 \exp(-\Gamma_k t_{\text{flight}})
-\end{equation}
-
-where:
-\begin{align}
-\Gamma_k &= \frac{2\nu}{\hbar}(E_k - E_0) \approx \frac{2\nu E_0}{\hbar}(\Lambda^{2k} - 1)\\
-t_{\text{flight}} &= L/v = L\sqrt{2m/E_0}
-\end{align}
-
-\textbf{Test}: Vary electron energy $E_0$, measure overall fringe visibility. Expect:
-\begin{equation}
-V(E_0) \propto \exp\left(-\frac{2\nu L}{\hbar}\sqrt{2m E_0^3}\right)
-\end{equation}
-
-\subsubsection{Partial Which-Way Measurement}
-
-\textbf{Setup}: Weak measurement near slits that only resolves shells $\mathcal{S}_0, ..., \mathcal{S}_m$ (coarse-grained).
-
-\textbf{Prediction}: 
-\begin{itemize}
-\item Fringes from shells $k \leq m$ destroyed (decoherence)
-\item Fringes from shells $k > m$ survive (unobserved)
-\end{itemize}
-
-\textbf{Observable}: Residual interference pattern with dominant spacing $\Delta y_{m+1}$ (from lowest unobserved shell).
-
-\textbf{Test}: Tune measurement strength to control which shells decohere. Plot visibility vs measurement coupling strength.
-
-\section{Cosmological Constant Problem}
-
-\subsection{Standard Calculation}
-
-Quantum field theory vacuum energy density:
+Naive summation of zero-point energies:
 \begin{equation}\label{eq:naive_vacuum}
-\rho_{\text{vac}}^{\text{naive}} = \sum_{k=0}^{k_{\max}} g_k E_k
+\rho_{\text{vac}}^{\text{naive}} = \sum_{\text{modes}} \frac{1}{2}\hbar\omega_k \sim M_{\text{Pl}}^4 \sim 10^{76} \text{ GeV}^4
 \end{equation}
 
-where $k_{\max}$ corresponds to Planck scale cutoff.
-
-With $g_k \sim E_k^{d/2}$ (density of states):
+Observed:
 \begin{equation}
-\rho_{\text{vac}}^{\text{naive}} \sim \int_0^{E_{\text{Planck}}} E^{d/2} \cdot E \, dE \sim E_{\text{Planck}}^{d/2+2} \sim M_{\text{Planck}}^4
+\rho_{\text{vac}}^{\text{obs}} \sim 10^{-47} \text{ GeV}^4
 \end{equation}
 
-\textbf{Problem}: Observed $\rho_{\text{vac}}^{\text{obs}} \sim (10^{-3} \text{ eV})^4 \sim 10^{-120} M_{\text{Planck}}^4$.
+Discrepancy: $\sim 10^{123}$.
 
-\subsection{Shell Model Resolution}
+\subsubsection{Shell Resolution}
 
-\subsubsection{Observable Vacuum Energy}
+In our framework:
+\begin{itemize}
+\item Only modes in dominant shell $\mathcal{S}_0$ contribute to observable vacuum energy
+\item Higher shell modes reside in orthogonal sectors (different thimbles)
+\item Their contribution suppressed by decoherence and thimble separation
+\end{itemize}
 
-\textbf{Claim}: Only the dominant shell $\mathcal{S}_0$ contributes to observable vacuum energy.
+Observable vacuum energy:
+\begin{equation}\label{eq:shell_vacuum}
+\rho_{\text{vac}}^{\text{obs}} = \rho_{\mathcal{S}_0} = \sum_{n \in \mathcal{S}_0} \frac{1}{2}\hbar\omega_n
+\end{equation}
 
-\textbf{Justification}:
+If $\mathcal{S}_0$ contains $\sim 10^{-120}$ fraction of all modes, we recover observed value.
+
+\subsubsection{Shell Spacing}
+
+Required shell spacing to match observation:
+\begin{equation}
+\Lambda = e^{\mathcal{O}(10)}
+\end{equation}
+
+This corresponds to characteristic energy scale $E_0 \sim$ meV to eV, consistent with scales where classical-quantum transition is empirically observed.
+
+\subsection{Double-Slit Interference from Multiple Shells}
+
+\subsubsection{Setup}
+
+Standard double-slit: electrons pass through slits separated by $d$, detected on screen at distance $L$.
+
+\subsubsection{Nested Fringe Structure}
+
+Each shell contributes interference with characteristic wavelength:
+\begin{equation}\label{eq:wavelength_k}
+\lambda_k = \frac{h}{p_k} = \frac{h}{\sqrt{2m E_k}}
+\end{equation}
+
+For shell $k$ with energy $E_k = E_0\Lambda^k$:
+\begin{equation}
+\lambda_k = \frac{\lambda_0}{\Lambda^{k/2}}
+\end{equation}
+
+Fringe spacing on screen:
+\begin{equation}\label{eq:fringe_spacing}
+\Delta y_k = \frac{\lambda_k L}{d} = \frac{\Delta y_0}{\Lambda^{k/2}}
+\end{equation}
+
+where $\Delta y_0$ is the fringe spacing from ground shell $\mathcal{S}_0$.
+
+\subsubsection{Visibility}
+
+The visibility of fringes from shell $k$:
+\begin{equation}
+\mathcal{V}_k = e^{-2\beta E_k} = e^{-2\beta E_0\Lambda^k}
+\end{equation}
+
+Higher shells produce finer fringes but with exponentially suppressed visibility.
+
+\subsubsection{Total Pattern}
+
+The observed intensity pattern is a superposition:
+\begin{equation}\label{eq:total_intensity}
+I(y) = \sum_{k=0}^{\infty} I_k \left[1 + \mathcal{V}_k \cos\left(\frac{2\pi y}{\Delta y_k}\right)\right]
+\end{equation}
+
+This produces nested interference: primary fringes from $\mathcal{S}_0$, secondary fine structure from $\mathcal{S}_1$, etc.
+
+\subsection{Energy-Dependent Quantum Statistics}
+
+\subsubsection{Boson vs Fermion Sectors}
+
+Different shells can exhibit different quantum statistics if energy scale affects effective exchange symmetry.
+
+For shell $k$:
+\begin{equation}
+|\psi_k\rangle_{\pm} = \frac{1}{\sqrt{2}}\left(|a\rangle|b\rangle \pm |b\rangle|a\rangle\right)
+\end{equation}
+
+where $\pm$ depends on shell-dependent phase factors.
+
+\subsubsection{Observational Signature}
+
+This predicts anomalous bunching/anti-bunching in multi-particle interferometry at specific energy scales corresponding to shell transitions.
+
+\section{Structural Implications}
+
+\subsection{Preservation of Past Configurations}
+
+Unlike temporal slicing in standard formulations, where past field configurations are information-theoretically lost to decoherence, the shell structure embeds past states as persistent topological features. Each thimble represents not merely a saddle-point approximation but a stable homology class whose accessibility depends on control parameters rather than temporal distance.
+
+This suggests a geometric distinction between:
+\begin{itemize}
+\item \textbf{Ergodic loss} (information scrambled but preserved in ensemble)
+\item \textbf{Structural loss} (homology class becomes inaccessible)
+\end{itemize}
+
+The Stokes crossing dynamics indicate that ``inaccessibility'' is parameter-dependent rather than absolute. Configurations that contribute negligibly under one parametrization can become dominant under another—the system's effective ``memory'' is encoded in its full homological structure, not merely its current dominant contributions.
+
+\subsection{Recursive Self-Reference}
+
+The complexified configuration space, when organized via energy-labeled thimbles, exhibits a form of structural self-reference: the action $S$ that defines the thimbles depends on the same field configurations that flow along them. In the open-system steady state, this creates a self-consistent structure where:
+
 \begin{enumerate}
-\item Measurement apparatus couples to observable sector (shell $\mathcal{S}_0$)
-\item Higher shells decohere rapidly via $\Gamma_{0,k} \propto k$
-\item Trace over hidden sector yields effective theory in $\mathcal{S}_0$
+\item The system's dynamics determine which configurations contribute
+\item These contributing configurations feed back to define the dynamics
+\item The steady state represents a fixed point of this recursion
 \end{enumerate}
 
-Observable vacuum energy density:
-\begin{equation}\label{eq:obs_vacuum}
-\rho_{\text{vac}}^{\text{obs}} = \frac{1}{\text{Vol}(\mathcal{S}_0)}\int_{\mathcal{S}_0} \langle \phi | \hat{H}_0 | \phi \rangle \, \mathcal{D}\phi
-\end{equation}
+This recursive structure, combined with the non-exhaustion of collapse space, suggests that the geometry of possibility is not merely a mathematical artifact but encodes meaningful relationships between past, present, and potential configurations.
 
-\subsubsection{Suppression Factor}
+\subsection{Implications for Measurement and Observation}
 
-The ratio:
-\begin{equation}\label{eq:suppression}
-\frac{\rho_{\text{vac}}^{\text{obs}}}{\rho_{\text{vac}}^{\text{naive}}} = \frac{\int_{\mathcal{S}_0} E_0 g_0 \, dE}{\sum_{k=0}^{k_{\max}} \int_{\mathcal{S}_k} E_k g_k \, dE} \approx \frac{g_0 E_0}{\sum_k g_k E_k}
-\end{equation}
+From an observer-centric perspective, measurement outcomes correspond to projections onto specific thimbles. The inter-shell decoherence ensures that observations appear classical (localized in the energy basis), while the underlying thimble structure maintains quantum coherence in the complexified space.
 
-With $g_k \sim E_k^{d/2}$ and $E_k = \Lambda^{2k} E_0$:
-\begin{equation}
-\frac{\rho_{\text{vac}}^{\text{obs}}}{\rho_{\text{vac}}^{\text{naive}}} \sim \frac{E_0^{d/2+1}}{\sum_{k=0}^{k_{\max}} (\Lambda^{2k}E_0)^{d/2+1}} \sim \frac{1}{\Lambda^{(d/2+1)k_{\max}}}
-\end{equation}
+Notably, the parameter-dependence of thimble accessibility suggests that sufficiently precise control over $(\beta, \nu, E_k)$ could, in principle, enable navigation through configuration space beyond standard temporal evolution. Whether such control is practically achievable remains an open question, but the geometric framework does not forbid it.
 
-For $d = 3$ and $k_{\max} = \ln(E_{\text{Planck}}/E_0)/\ln\Lambda \approx 400$ (with $\Lambda = 2$):
-\begin{equation}
-\frac{\rho_{\text{vac}}^{\text{obs}}}{\rho_{\text{vac}}^{\text{naive}}} \sim 2^{-5/2 \cdot 400} \sim 10^{-300}
-\end{equation}
+\begin{remark}
+These implications warrant cautious interpretation. We are not claiming the existence of ``parallel timelines'' or asserting that past configurations can be directly accessed through known mechanisms. Rather, we observe that the mathematical structure arising from monodromy obstruction exhibits features—persistent homology, parameter-dependent accessibility, recursive self-consistency—that differ qualitatively from standard treatments. The physical meaning of these features, particularly regarding information preservation and potential navigation, requires further investigation.
+\end{remark}
 
-\textbf{Overshoots} the required $10^{-120}$ suppression, suggesting:
+\section{Connection to Existing Frameworks}
+
+\subsection{Instantons and Tunneling}
+
+Instanton methods (Coleman-De Luccia \cite{ColemanDeLuccia1980}) compute tunneling rates between vacua by:
 \begin{itemize}
-\item Need smaller $k_{\max}$ (lower cutoff than Planck scale)
-\item Or larger $\Lambda$ (coarser shell spacing)
-\item Or additional selection mechanism (anthropic, dynamical)
-\end{itemize}
-
-\subsubsection{Physical Picture}
-
-The $10^{120}$ degrees of freedom are \textit{real} (exist in configuration space) but:
-\begin{itemize}
-\item Reside in shells $\mathcal{S}_1, \mathcal{S}_2, ..., \mathcal{S}_{k_{\max}}$
-\item Topologically separated from observable shell $\mathcal{S}_0$
-\item Decohere rapidly ($\Gamma_k \gg H_0$)
-\item Contribute only virtually (quantum corrections, not classical backgrounds)
-\end{itemize}
-
-\textbf{Analogy}: Like dark matter—present in total mass budget, but doesn't interact electromagnetically with our "observable sector" (baryons + photons).
-
-\section{Path Integral Consistency}
-
-\subsection{Euclidean-Minkowski Correspondence}
-
-\subsubsection{The Constraint}
-
-If Euclidean and Minkowski signatures describe the same physics, then:
-\begin{equation}\label{eq:path_integral_consistency}
-Z_E = \int_{\mathcal{C}_E} \mathcal{D}\phi_E \, e^{-S_E[\phi_E]} = Z_M = \int_{\mathcal{C}_M} \mathcal{D}\phi_M \, e^{iS_M[\phi_M]}
-\end{equation}
-
-after analytic continuation $\tau \to -it$.
-
-\subsubsection{Shell Structure Requirement}
-
-For both integrals to be well-defined and related by continuation:
-
-\textbf{Condition 1 (Measure Compatibility)}: The configuration spaces must have compatible structure:
-\begin{equation}
-\mathcal{C}_E = \bigoplus_k \mathcal{S}_k^{(E)}, \quad \mathcal{C}_M = \bigoplus_k \mathcal{S}_k^{(M)}
-\end{equation}
-
-\textbf{Condition 2 (Shell Correspondence)}: There exists a map $T_J$ (parametrized by rotation $J$):
-\begin{equation}
-T_J: \mathcal{S}_k^{(E)} \to \mathcal{S}_k^{(M)}
-\end{equation}
-
-preserving shell label $k$ (energy sector).
-
-\textbf{Condition 3 (Action Correspondence)}: For $\phi_M = T_J(\phi_E)$:
-\begin{equation}
--S_E[\phi_E] \xrightarrow{\text{analytic continuation}} iS_M[\phi_M]
-\end{equation}
-
-\subsection{Constraint on Configuration Space Volume}
-
-The monodromy obstruction implies:
-
-\textbf{Euclidean sector ($J \neq 0$)}:
-\begin{itemize}
-\item Cannot support smooth periodic evolution
-\item Only partial shell structure accessible (interior region $\tau < \tau_*$)
-\item Exterior region ($\tau > \tau_*$) pathological
-\end{itemize}
-
-\textbf{Minkowski sector}:
-\begin{itemize}
-\item Non-compact time $\Rightarrow$ full shell structure accessible
-\item All shells $\mathcal{S}_k$ well-defined
-\end{itemize}
-
-\textbf{Implication}: Not all Euclidean configurations map to Minkowski. The "missing" configurations are:
-\begin{equation}
-\mathcal{C}_E^{\text{pathological}} = \mathcal{C}_E^{\text{total}} \setminus \mathcal{C}_E^{\text{interior}}
-\end{equation}
-
-These correspond to configurations "beyond the monodromy obstruction."
-
-\subsection{Least Action and Configuration Space Geometry}
-
-\subsubsection{Stationary Phase Approximation}
-
-Path integral dominated by configurations near action extrema:
-\begin{equation}
-Z \approx \sum_{\phi_{\text{classical}}} e^{-S[\phi_{\text{classical}}]} \times (\text{Gaussian fluctuations})
-\end{equation}
-
-\textbf{Requirement for classical limit}: Action $S[\phi]$ must have isolated extrema $\delta S = 0$.
-
-\subsubsection{Shell Organization}
-
-\begin{lemma}[Action Extrema Structure]
-If configuration space were uniformly random (no shell structure), stationary phase approximation would fail.
-\end{lemma}
-
-\begin{proof}[Proof sketch]
-Suppose $\mathcal{C}$ has no geometric organization. Then for any $\phi \in \mathcal{C}$, there exist arbitrarily nearby configurations $\phi + \delta\phi$ with:
-\begin{equation}
-S[\phi + \delta\phi] = S[\phi] \pm \mathcal{O}(1)
-\end{equation}
-
-(random fluctuations of order unity). This means $\delta S/\delta\phi$ has no well-defined zeros—the action landscape is fractal noise.
-
-Without isolated extrema, path integral:
-\begin{equation}
-Z \sim \int e^{-S[\phi] + \text{noise}} \mathcal{D}\phi
-\end{equation}
-
-is dominated by random fluctuations, not classical paths. No classical limit emerges.
-\end{proof}
-
-\textbf{Conclusion}: Shell structure (geometric organization by energy) is \textit{necessary} for:
-\begin{itemize}
-\item Path integral convergence
-\item Existence of classical limit
-\item Stationary phase approximation
-\item Born rule (probabilities from amplitudes)
-\end{itemize}
-
-\section{Relation to Prior Work}
-
-\subsection{Instanton Methods}
-
-Standard instanton calculus (Coleman-De Luccia \cite{ColemanDeLuccia1980}) considers tunneling between field theory vacua via Euclidean bounce solutions.
-
-\textbf{Similarities}:
-\begin{itemize}
-\item Use Euclidean path integral
+\item Finding Euclidean solutions (instantons)
 \item Identify transitions via non-trivial action
 \item Compute tunneling rates
 \end{itemize}
@@ -748,9 +448,9 @@ Standard instanton calculus (Coleman-De Luccia \cite{ColemanDeLuccia1980}) consi
 
 Recent work (Witten, Cristoforetti, et al. \cite{Witten2010, Cristoforetti2012}) uses complex saddle points and Lefschetz thimbles to define path integrals.
 
-\textbf{Connection}: The monodromy spiral in complex plane (Figure 1 of \cite{SignatureEmergence}) is precisely the structure Picard-Lefschetz theory addresses.
+\textbf{Connection}: The monodromy spiral in complex plane \cite{SignatureEmergence} is precisely the structure Picard-Lefschetz theory addresses.
 
-\textbf{Our contribution}: Physical interpretation of thimbles as energy shells, with observable consequences (decoherence, interference patterns).
+\textbf{Our contribution}: Physical interpretation of thimbles as energy shells, with observable consequences (decoherence, interference patterns), and identification of the open-system steady state that prevents collapse space exhaustion.
 
 \subsection{Stochastic Quantization}
 
@@ -768,12 +468,14 @@ Parisi-Wu formalism \cite{ParisiWu1981} introduces fictitious time $\tau$ with L
 We have developed a radial shell decomposition of field configuration space based on the monodromy obstruction from rotational stress. Key findings:
 
 \begin{enumerate}
-\item Configuration space naturally partitions into energy-labeled shells $\mathcal{S}_k$
-\item Shells are topologically distinct and exhibit controlled decoherence via $\Gamma_{k,k'} \propto \nu|E_k - E_{k'}|$
-\item Each shell corresponds to a Many Worlds ``branch'' with concrete physical content
+\item Configuration space decomposes over energy-labeled Lefschetz thimbles $\mathcal{S}_k$ in the complexified space
+\item Shells are topologically distinct (as relative homology classes) and exhibit controlled decoherence via standard open-system mechanisms
+\item The shell structure provides physical content for quantum branching and measurement
 \item Observable vacuum energy comes from dominant shell $\mathcal{S}_0$, resolving cosmological constant discrepancy
 \item Double-slit experiment produces nested interference from multiple shells, yielding testable predictions
-\item Path integral consistency requires geometric organization—shell structure is necessary, not optional
+\item Path integral consistency requires this geometric organization via KMS equilibrium, monodromy obstruction, and open-system dynamics
+\item Convergence does not exhaust future collapse space due to irrational phase winding, Stokes crossings, and open-system steady state
+\item Past configurations persist as accessible thimble structures, with parameter-dependent rather than absolute inaccessibility
 \end{enumerate}
 
 \subsection{Open Questions}
@@ -798,6 +500,17 @@ Proposed experiments:
 
 All feasible with current technology but require careful systematic error control.
 
+\subsubsection{Configuration Space Navigation}
+
+The parameter-dependence of thimble accessibility raises the question: could sufficiently precise control over $(\beta, \nu, E_k)$ enable accessing past configuration structures? This would require:
+\begin{itemize}
+\item Mapping the full thimble homology structure
+\item Understanding how parameters couple to specific thimbles
+\item Developing technology to control these parameters at required precision
+\end{itemize}
+
+While the geometric framework does not forbid such navigation, whether it is practically achievable remains open.
+
 \subsubsection{Quantum Gravity Connection}
 
 How does shell structure relate to:
@@ -811,17 +524,15 @@ Speculation: Shells might be related to quantized energy levels in quantum cosmo
 
 \subsection{Philosophical Implications}
 
-\subsubsection{Realism About Mathematics}
+\subsubsection{Realism About Mathematical Structures}
 
-The shell structure is forced by mathematical consistency (path integral convergence, monodromy obstruction). This suggests:
-
-\textbf{Mathematical structures are physically real when they are indispensable for making empirical predictions.}
+The shell structure is forced by mathematical consistency (path integral convergence, monodromy obstruction, KMS conditions). This suggests that mathematical structures arising from consistency requirements have physical reality when indispensable for empirical predictions.
 
 Higher shells are as real as electromagnetic fields or gravitational waves—we don't directly observe them, but they're necessary for explaining what we do observe.
 
 \subsubsection{Relationalism About Observers}
 
-Different observers couple to different shells depending on their measurement basis. There is no absolute ``observable sector''—it's relational.
+Different observers couple to different shells depending on their measurement basis and control parameters. There is no absolute ``observable sector''—it is relational and parameter-dependent.
 
 \textbf{Connection to quantum reference frames} \cite{Giacomini2019}: The shell decomposition might be observer-dependent (different reference frames access different shell structures).
 
@@ -856,28 +567,36 @@ Recast shell structure using:
 
 \section{Conclusions}
 
-We have shown that the monodromy obstruction from signature emergence naturally induces a radial shell structure in field configuration space. This structure:
+We have shown that the monodromy obstruction from signature emergence naturally induces a radial shell structure in field configuration space when combined with KMS equilibrium and open-system dynamics. This structure:
 
 \begin{itemize}
-\item Provides physical grounding for Many Worlds interpretation (shells = branches)
+\item Provides physical grounding for quantum measurement and branching (shells as distinct thimble homology classes)
 \item Resolves cosmological constant problem (observable vacuum from single shell)
 \item Makes testable predictions (multi-scale interference, energy-dependent decoherence)
-\item Is necessary for path integral consistency (geometric organization required for classical limit)
+\item Is necessary for path integral consistency (geometric organization required for well-defined Euclidean continuation)
+\item Preserves past configurations as accessible topological structures with parameter-dependent accessibility
+\item Exhibits recursive self-reference in its steady-state structure
 \end{itemize}
 
-The framework unifies disparate aspects of quantum theory—measurement, interference, vacuum energy, MWI—under a single geometric principle: energy organization in configuration space.
+The framework unifies disparate aspects of quantum theory—measurement, interference, vacuum energy, configuration space structure—under a single geometric principle: energy organization via Lefschetz thimbles in complexified configuration space, arising from the interplay of monodromy obstruction, thermal equilibrium, and open-system dynamics.
 
-Rather than postulating parallel worlds or invoking mysterious collapse, we identify ``branches'' with pre-existing structure in quantum field theory: the decomposition of field modes by energy. This structure becomes physically manifest through the rotation-induced coupling $\overline{V_I}$ that breaks Euclidean periodicity and forces signature emergence.
+Rather than postulating parallel worlds or invoking mysterious collapse, we identify quantum branching structure with pre-existing organization in quantum field theory: the Picard-Lefschetz decomposition into thimbles, labeled by energy via KMS conditions. This structure becomes physically manifest through the rotation-induced coupling $\overline{V_I}$ that breaks Euclidean periodicity and forces signature emergence.
 
-The shell model demonstrates that foundational questions in quantum mechanics (what are ``worlds''? why Born rule? where is vacuum energy?) may have answers rooted in the geometric and topological properties of configuration space—properties made visible through the lens of signature transitions.
+The shell model demonstrates that foundational questions in quantum mechanics (what is the structure of configuration space? why do measurements yield definite outcomes? where is vacuum energy?) may have answers rooted in the geometric and topological properties of complexified field space—properties made visible through the lens of signature transitions and open-system dynamics.
 
 \section*{Acknowledgments}
 
-I thank the developers of Claude (Anthropic) for assistance in developing the mathematical framework and identifying connections to existing literature.
+I thank the developers of Claude (Anthropic) for assistance in developing the mathematical framework and identifying connections to existing literature. I also thank Microsoft Copilot for detailed technical feedback on convergence mechanisms and rigorous grounding of the shell structure.
 
 \begin{thebibliography}{99}
 
 \bibitem{SignatureEmergence} A. Morgan, \textit{Signature Emergence from Rotational Stress: A Non-Wick Mechanism}, arXiv:XXXX.XXXXX (2025).
+
+\bibitem{Zurek2003} W. H. Zurek, \textit{Decoherence, einselection, and the quantum origins of the classical}, Rev. Mod. Phys. \textbf{75}, 715 (2003).
+
+\bibitem{BreuerPetruccione} H.-P. Breuer and F. Petruccione, \textit{The Theory of Open Quantum Systems} (Oxford University Press, 2002).
+
+\bibitem{BerryHowls1991} M. V. Berry and C. J. Howls, \textit{Hyperasymptotics for integrals with saddles}, Proc. R. Soc. Lond. A \textbf{434}, 657 (1991).
 
 \bibitem{ColemanDeLuccia1980} S. Coleman and F. De Luccia, \textit{Gravitational effects on and of vacuum decay}, Phys. Rev. D \textbf{21}, 3305 (1980).
 
