@@ -419,6 +419,22 @@ The key insight: Born probabilities are not axioms about measurement or statisti
 
 Both Many Worlds Interpretation and our framework accept ontological plurality—that multiple realities exist physically, not merely as descriptions. The crucial difference lies in how this plurality is structured and how it relates to measurement.
 
+\textbf{The relational structure of measurement}: Ontological plurality in our framework is fundamentally relational rather than absolute. There is no single privileged "real world"—instead, reality consists of a network of boundary points, each undergoing convergence onto locally dominant configurations. Crucially:
+
+\begin{itemize}
+\item Each boundary point experiences its own convergence event, yielding a genuine local "present moment"
+\item These convergences are not causally isolated—they remain coupled through open-system dynamics ($\Gamma_{k,k'}$) and shared parameter space
+\item The observed outcome at one boundary point constrains but does not determine outcomes at other boundary points
+\item Consistency emerges from the geometric structure: all boundary points sample from the same thimble homology, weighted by the same Boltzmann factors
+\end{itemize}
+
+This differs fundamentally from both traditional interpretations:
+\begin{itemize}
+\item \textbf{vs. MWI}: No divergence into causally isolated branches. Plurality exists from the start as the spatial extent of the boundary manifold, not as temporal splitting.
+\item \textbf{vs. Copenhagen}: No need for "observers" or "measurement apparatus" as primitive concepts. Convergence occurs at every boundary point as a geometric necessity.
+\item \textbf{vs. Solipsism}: Your experience is real but not unique—other boundary points undergo equally real convergences. The network structure prevents collapse to a single perspective.
+\end{itemize}
+
 \subsubsection{MWI: Plurality Through Divergence}
 
 Standard Many Worlds posits:
@@ -603,6 +619,41 @@ where $\pm$ depends on shell-dependent phase factors.
 \subsubsection{Observational Signature}
 
 This predicts anomalous bunching/anti-bunching in multi-particle interferometry at specific energy scales corresponding to shell transitions.
+\subsubsection{Recursive Self-Reference and the Origin of $|\psi|^2$}
+
+The Born probability $P_k \propto |w_k|^2 = e^{-2\beta E_k}$ exhibits a profound recursive structure. The squaring arises not from an arbitrary axiom but from the wavefunction's self-interaction as it navigates configuration space.
+
+\textbf{Geometric picture}: Consider the complex amplitude $w_k = e^{-\beta E_k} e^{i\theta_k}$ associated with thimble $J_k$. In the complexified configuration space, this amplitude represents:
+\begin{itemize}
+\item \textbf{Forward evolution}: $e^{i\theta_k}$ phase accumulation along the thimble
+\item \textbf{Dissipation}: $e^{-\beta E_k}$ suppression from coupling to other shells
+\end{itemize}
+
+The probability $P_k = |w_k|^2$ can be understood as the amplitude's self-intersection:
+
+\begin{equation}
+P_k = w_k \cdot \bar{w}_k = e^{-\beta E_k} e^{i\theta_k} \cdot e^{-\beta E_k} e^{-i\theta_k} = e^{-2\beta E_k}
+\end{equation}
+
+\textbf{Physical interpretation}: As the boundary configuration evolves through complexified space, different portions of the total amplitude find new intersections. Each intersection point contributes $w_k \bar{w}_{k'}$. When $k = k'$ (self-intersection along the same thimble), the phases cancel and only the Boltzmann suppression survives—doubled because both "incoming" and "outgoing" amplitudes contribute dissipation.
+
+\textbf{Connection to Noether's theorem}: The phase cancellation $e^{i\theta_k} e^{-i\theta_k} = 1$ reflects conservation of the quantity conjugate to the monodromy parameter. Specifically:
+\begin{itemize}
+\item The rotation angle $\nu$ generates monodromy with conserved angular momentum $L$
+\item The thermal parameter $\beta$ conjugates to energy $E$
+\item Self-intersection occurs along axes of symmetry where conserved quantities match
+\end{itemize}
+
+This connects to the Noether current:
+\begin{equation}
+J^\mu = \frac{\partial \mathcal{L}}{\partial(\partial_\mu \phi)} \delta \phi - K^\mu
+\end{equation}
+
+For the monodromy transformation $\phi \to e^{i\nu E t} \phi$, the conserved charge is precisely the energy $E$ that labels our shells. The self-intersection formula $P_k = |w_k|^2$ thus reflects the geometric requirement that probability concentrates where the symmetry-generated flow closes on itself.
+
+\textbf{Recursive structure}: The Born rule contains a kind of self-reference: the probability of a configuration depends on how strongly that configuration selects itself through geometric convergence. Higher energy shells are suppressed not because they are "less real" but because their self-intersection strength (convergence weight) is geometrically diminished by the factor $e^{-2\beta E_k}$.
+
+This explains why measurement "collapses" to definite outcomes: configurations with strong self-intersection (low $E_k$) naturally dominate, while high-energy configurations contribute but are geometrically suppressed. The wavefunction doesn't collapse onto these outcomes—rather, these outcomes represent the fixed points of the self-intersection dynamics in configuration space.
 
 \section{Structural Implications}
 
