@@ -645,22 +645,70 @@ The energy basis is a natural pointer basis for stationary environments since en
 
 \subsubsection{Decoherence Rate Estimate}
 
-Following standard einselection arguments, the decoherence rate between shells is approximately:
-\begin{equation}\label{eq:decoherence}
-\Gamma_{k,k'} \sim \gamma |E_k - E_{k'}|
-\end{equation}
+The decoherence rate between shells has two contributions:
 
-where $\gamma$ is an environment-dependent coupling strength. In our framework, $\gamma \sim \nu$ since the rotation-induced term provides the primary coupling to the dissipative Minkowski outlet.
+\paragraph{Intrinsic Inter-Shell Coupling}
 
-For adjacent shells:
+From the rotation-induced monodromy structure, shells with different energies decohere at a rate determined by their energy separation:
 \begin{equation}
-\Gamma_{k,k+1} \sim \nu E_0(\Lambda - 1)
+\Gamma_{k,k'}^{\text{geom}} = \frac{2\nu}{\hbar}|E_k - E_{k'}|
+\label{eq:geometric_decoherence}
 \end{equation}
 
-For widely separated shells:
+This geometric contribution arises from the imaginary part of the rotation-induced potential $V_I$ (Equation~\ref{eq:shell_nu}). Crucially, $\nu$ is an \textit{intrinsic} parameter of the configuration space structure---it encodes the monodromy phase $\beta\nu E_k$ and should remain invariant under environmental changes that do not affect the underlying rotation.
+
+\paragraph{Environmental Baseline}
+
+In addition to the geometric contribution, standard open-system dynamics [2, 3] introduce environmental decoherence from coupling to external baths:
 \begin{equation}
-\Gamma_{k,k'} \sim \nu E_0(\Lambda^{k'} - \Lambda^k) \quad \text{for } k' \gg k
+\Gamma_{k,k'}^{\text{env}} = \gamma_{\text{env}}|E_k - E_{k'}| + \Gamma_0
+\label{eq:environmental_decoherence}
 \end{equation}
+
+where:
+\begin{itemize}
+\item $\gamma_{\text{env}}$ depends on bath spectral density (Ohmic: $\gamma_{\text{env}} \propto \eta$)
+\item $\Gamma_0$ is a baseline rate from low-frequency environmental noise
+\item Both $\gamma_{\text{env}}$ and $\Gamma_0$ vary with environmental conditions
+\end{itemize}
+
+\paragraph{Total Decoherence Rate}
+
+The total decoherence rate combines both contributions:
+\begin{equation}
+\Gamma_{k,k'} = \Gamma_{k,k'}^{\text{geom}} + \Gamma_{k,k'}^{\text{env}} = \left(\frac{2\nu}{\hbar} + \gamma_{\text{env}}\right)|E_k - E_{k'}| + \Gamma_0
+\label{eq:total_decoherence}
+\end{equation}
+
+In typical experimental settings where shell structure dominates ($\nu \gg \gamma_{\text{env}}$), the geometric contribution determines the energy scaling, while environmental effects primarily contribute to the baseline $\Gamma_0$.
+
+\paragraph{Scaling for Adjacent and Distant Shells}
+
+For adjacent shells ($k' = k \pm 1$):
+\begin{equation}
+\Gamma_{k,k+1} \approx \frac{2\nu}{\hbar} E_0(\Lambda - 1) + \Gamma_0
+\end{equation}
+
+For widely separated shells ($k' \gg k$):
+\begin{equation}
+\Gamma_{k,k'} \approx \frac{2\nu}{\hbar} E_0(\Lambda^{k'} - \Lambda^k) + \Gamma_0
+\end{equation}
+
+The exponential separation in energy leads to rapidly increasing decoherence rates for distant shells, ensuring effective suppression of coherence between non-adjacent shells.
+
+\paragraph{Physical Interpretation}
+
+The separation into geometric and environmental contributions has important implications:
+
+\begin{enumerate}
+\item \textbf{Geometric dominance}: If shell structure is the fundamental mechanism, $\nu$ should dominate the slope: $\frac{2\nu}{\hbar} \gg \gamma_{\text{env}}$
+
+\item \textbf{Environmental independence}: The geometric parameter $\nu$ should remain stable under environmental variations (temperature, bath impedance, EM noise) that cause $\gamma_{\text{env}}$ and $\Gamma_0$ to fluctuate
+
+\item \textbf{Testability}: The stability of $\nu$ vs. variability of $\Gamma_0$ provides experimental signature distinguishing shell structure from standard decoherence (Section 7.4)
+\end{enumerate}
+
+This decomposition explains why measuring the \textit{slope} of decoherence vs. energy is more revealing than measuring absolute decoherence rates: the slope encodes geometric structure, while the intercept captures contingent environmental details.
 
 \subsubsection{Born Rule from Convergence Geometry}
 
@@ -768,49 +816,57 @@ The recursive aspect becomes clear: asking ``what is the probability of outcome 
 \end{itemize}
 
 \section{Physical Consequences}
-\subsection{Convergence vs Branching: The Structure of Ontological Plurality}
 
-Both Many Worlds Interpretation and our framework accept ontological plurality—that multiple realities exist physically, not merely as descriptions. The crucial difference lies in how this plurality is structured and how it relates to measurement.
+\subsection{The Structure of Ontological Plurality}
 
-\textbf{The relational structure of measurement}: Ontological plurality in our framework is fundamentally relational rather than absolute. There is no single privileged "real world"—instead, reality consists of a network of boundary points, each undergoing convergence onto locally dominant configurations. Crucially:
+Both Many Worlds Interpretation and our framework accept ontological plurality---that multiple realities exist physically, not merely as descriptions. The crucial difference lies in how this plurality is structured and how it relates to measurement.
 
-\begin{itemize}
-\item Each boundary point experiences its own convergence event, yielding a genuine local "present moment"
-\item These convergences are not causally isolated—they remain coupled through open-system dynamics ($\Gamma_{k,k'}$) and shared parameter space
-\item The observed outcome at one boundary point constrains but does not determine outcomes at other boundary points
-\item Consistency emerges from the geometric structure: all boundary points sample from the same thimble homology, weighted by the same Boltzmann factors
-\end{itemize}
+\subsubsection{Two Mechanisms of Plurality}
 
-This differs fundamentally from both traditional interpretations:
-\begin{itemize}
-\item \textbf{vs. MWI}: No divergence into causally isolated branches. Plurality exists from the start as the spatial extent of the boundary manifold, not as temporal splitting.
-\item \textbf{vs. Copenhagen}: No need for "observers" or "measurement apparatus" as primitive concepts. Convergence occurs at every boundary point as a geometric necessity.
-\item \textbf{vs. Solipsism}: Your experience is real but not unique—other boundary points undergo equally real convergences. The network structure prevents collapse to a single perspective.
-\end{itemize}
-
-\subsubsection{MWI: Plurality Through Divergence}
+\paragraph{MWI: Plurality Through Divergence}
 
 Standard Many Worlds posits:
 \begin{itemize}
-\item \textbf{Process}: Measurement causes branching (one universe → many)
+\item \textbf{Process}: Measurement causes branching (one universe $\to$ many)
 \item \textbf{Structure}: Branches are independent, causally disconnected
-\item \textbf{Mechanism}: None—branching is postulated, not derived
-\item \textbf{Observation}: "You" observe one outcome because you're in one branch
+\item \textbf{Mechanism}: None---branching is postulated, not derived
+\item \textbf{Observation}: ``You'' observe one outcome because you're in one branch
 \end{itemize}
 
-\subsubsection{Our Framework: Plurality Through Convergence Network}
+\paragraph{Our Framework: Plurality Through Convergent Network}
 
 Our framework shows:
 \begin{itemize}
-\item \textbf{Process}: Multiple boundary points define multiple convergences (many → constrained outcomes)
+\item \textbf{Process}: Multiple boundary points define multiple convergences (many $\to$ constrained outcomes)
 \item \textbf{Structure}: Convergences are interdependent, coupled through $V_{k,k'}$ and shared parameter space
-\item \textbf{Mechanism}: Geometric—each convergence minimizes dissipation given rotation constraints
+\item \textbf{Mechanism}: Geometric---each convergence minimizes dissipation given rotation constraints
 \item \textbf{Observation}: You observe one outcome because you're at one boundary point undergoing one convergence event
 \end{itemize}
 
+\subsubsection{The Relational Nature of Measurement}
+
+Ontological plurality in our framework is fundamentally \textit{relational} rather than absolute. There is no single privileged ``real world''---instead, reality consists of a network of boundary points, each undergoing convergence onto locally dominant configurations.
+
+\paragraph{Key Features of the Relational Structure}
+
+\begin{enumerate}
+\item \textbf{Local convergence}: Each boundary point experiences its own convergence event, yielding a genuine local ``present moment''
+
+\item \textbf{Persistent coupling}: These convergences are not causally isolated---they remain coupled through:
+\begin{itemize}
+\item Open-system dynamics: $\Gamma_{k,k'} = \frac{2\nu}{\hbar}|E_k - E_{k'}|$
+\item Shared parameter space: All points sample from the same thimble homology
+\item Boltzmann weighting: Same thermal factors $e^{-\beta E_k}$ everywhere
+\end{itemize}
+
+\item \textbf{Constrained but not determined}: The observed outcome at one boundary point constrains but does not determine outcomes at other boundary points
+
+\item \textbf{Emergent consistency}: Global consistency emerges from the geometric structure: all boundary points sample from the same configuration space, weighted by the same measure
+\end{enumerate}
+
 \subsubsection{The Network of Presents}
 
-Every point on the stretched horizon defines a valid Minkowski reference frame and undergoes convergence. These convergences are not isolated—they form a \textit{self-consistent network} constrained by:
+Every point on the stretched horizon defines a valid Minkowski reference frame and undergoes convergence. These convergences are not isolated---they form a self-consistent network constrained by:
 
 \begin{enumerate}
 \item \textbf{Inter-shell coupling}: $V_{k,k'}$ couples configurations across shells
@@ -818,147 +874,38 @@ Every point on the stretched horizon defines a valid Minkowski reference frame a
 \item \textbf{Open-system dynamics}: Convergences influence each other through dissipative channels
 \end{enumerate}
 
-An observer at boundary point $x_i$ experiences convergence $C_i$ onto dominant thimble $J_i$. Another observer at $x_j$ experiences convergence $C_j$ onto $J_j$. These are distinct "present moments," yet they are \textit{mutually consistent} because the open-system coupling constrains which thimbles can simultaneously dominate.
+An observer at boundary point $\mathbf{x}_i$ experiences convergence $C_i$ onto dominant thimble $\mathcal{J}_i$. Another observer at $\mathbf{x}_j$ experiences convergence $C_j$ onto $\mathcal{J}_j$. These are distinct ``present moments,'' yet they are mutually consistent because the open-system coupling constrains which thimbles can simultaneously dominate.
 
-\textbf{What you observe}: Not THE present, but A present—the convergence event at your boundary location.
+\paragraph{What You Observe}
 
-\textbf{Why it feels unique}: Local convergence dominates your observation; other convergences are inaccessible from your boundary point without parameter navigation.
-
-\textbf{Why it's not solipsistic}: Other convergences are ontologically real, and the coupling structure ensures they form compatible network (you can communicate with other observers, share history, etc.).
-
-\subsubsection{Why This Explains Measurement}
-
-MWI cannot explain \textit{why} you observe particular outcome—it only says "you're in a branch." Our framework provides geometric mechanism:
-
-\textbf{You observe outcome $O_i$ because}:
-\begin{enumerate}
-\item Your boundary location undergoes convergence
-\item Path integral at your location converges onto thimble $J_i$ that minimizes dissipation
-\item Boltzmann and phase weighting: $w_i \propto e^{-\beta E_i}$ exponentially favors $J_i$
-\item Decoherence suppresses other thimbles at rate $\Gamma \sim \nu|E_i - E_j|$
-\end{enumerate}
-
-This is not "you're in one universe"—it's "you're at one convergence point in a network of ontologically real but coupled convergences."
-
-\subsubsection{Testable Distinction}
-
-MWI predicts: Branches are causally isolated (no way to detect other branches)
-
-Our framework predicts: Convergences are coupled (signatures of coupling detectable):
 \begin{itemize}
-\item Nested interference patterns from multiple shell contributions before convergence
-\item Energy-dependent decoherence rates revealing coupling structure
-\item Parameter-dependent shifts in dominant thimble (Stokes crossings)
+\item Not \textbf{the} present, but \textbf{a} present---the convergence event at your boundary location
+\item \textbf{Why it feels unique}: Local convergence dominates your observation; other convergences are inaccessible from your boundary point without parameter navigation
+\item \textbf{Why it's not solipsistic}: Other convergences are ontologically real, and the coupling structure ensures they form compatible network (you can communicate with other observers, share history, etc.)
 \end{itemize}
 
-The plurality is not in question—both frameworks have it. The question is: divergent branches (MWI) or convergent network (ours)?
-
-\subsubsection{Shell Spacing from Boundary Physics}
-
-To make the cosmological constant resolution quantitative, we must derive the shell spacing $\Lambda$ from boundary fluid properties rather than assuming it.
-
-\textbf{Setup}: At the stretched horizon, boundary fluid has:
-\begin{itemize}
-\item Viscosity: $\nu$ (kinematic)
-\item Rotation rate: $\Omega_H$ (horizon angular velocity)
-\item Surface gravity: $\kappa = 1/(4M)$ for Schwarzschild, $\kappa = \kappa(a,M)$ for Kerr
-\item Temperature: $T_H = \kappa/(2\pi)$, so $\beta = 2\pi/\kappa$
-\end{itemize}
-
-\textbf{Shell energy scale}: The ground shell $\mathcal{S}_0$ should have characteristic energy set by thermal scale:
-$$E_0 \sim k_B T_H = \frac{\kappa}{2\pi}$$
-
-For Schwarzschild black hole: $\kappa = 1/(4M)$, giving $E_0 \sim 1/(8\pi M)$.
-
-\textbf{Shell spacing}: The ratio $\Lambda = E_{k+1}/E_k$ should relate to dissipation structure. From Navier-Stokes mapping, the imaginary potential scales as:
-$$\bar{V}_I \sim \nu \Omega_H^2$$
-
-The shell spacing emerges from how this dissipation organizes thimbles. Configurations separated by energy $\Delta E$ decohere at rate:
-$$\Gamma \sim \nu \Delta E$$
-
-For shells to be well-separated (decohere before inter-shell transitions), require:
-$$\Gamma_{k,k+1} \cdot \tau_\text{thermal} \gtrsim 1$$
-where $\tau_\text{thermal} = \beta$ is thermal timescale.
-
-This gives:
-$$\nu E_0 (\Lambda - 1) \cdot \beta \gtrsim 1$$
-
-Solving for $\Lambda$:
-$$\Lambda \gtrsim 1 + \frac{1}{\nu \beta E_0}$$
-
-For Kerr black hole, $\nu$ relates to horizon properties. Near extremal rotation ($a \to M$), viscosity bound gives $\nu \sim \ell_\text{Planck}^2$. Using $\beta \sim M$ and $E_0 \sim 1/M$:
-$$\Lambda \sim 1 + \ell_\text{Planck}^2 M^2 \sim 1 + (M/M_\text{Planck})^2$$
-
-\textbf{Application to vacuum energy}:
-
-For cosmological-scale structure, if observable universe corresponds to ground shell of structure at Hubble scale $R_H \sim 10^{28}$ cm:
-$$\Lambda \sim (R_H/\ell_\text{Planck})^2 \sim 10^{122}$$
-
-The ratio of modes in $\mathcal{S}_0$ to total:
-$$\frac{N_{\mathcal{S}_0}}{N_\text{total}} \sim \frac{1}{\Lambda} \sim 10^{-122}$$
-
-This gives vacuum energy suppression:
-$$\frac{\rho_\text{obs}}{\rho_\text{naive}} \sim 10^{-122}$$
-
-matching the observed discrepancy to within order of magnitude.
-
-\textbf{Limitations}: This derivation assumes:
-\begin{itemize}
-\item Observable universe corresponds to black hole boundary at Hubble scale (speculative)
-\item Shell structure scales from microscopic (Planck) to cosmological (Hubble)
-\item Single dominant shell dominates vacuum energy
-\end{itemize}
-
-More rigorous derivation requires understanding cosmological boundary structure and how shell spacing scales across energy ranges. Nevertheless, this demonstrates that shell spacing $\Lambda \sim 10^{122}$ emerges naturally from boundary dissipation physics at cosmological scales, rather than being tuned by hand.
-
-\textbf{Testable implication}: If shell spacing relates to dissipation, then environments with different effective viscosity should show different shell structures. Laboratory tests manipulating dissipation in quantum systems could probe this relationship at accessible scales.
-
-\subsection{The Relational Structure of Ontological Plurality}
-
-Both Many Worlds Interpretation and our framework accept ontological plurality---that multiple realities exist physically, not merely as descriptions. The crucial difference lies in how this plurality is structured and how it relates to measurement.
-
-\subsubsection{Network Structure vs. Divergent Branching}
-
-\textbf{Traditional MWI}: Reality \textit{diverges} at each measurement. A single universe splits into causally isolated branches, proliferating exponentially with each observation. The observer ``goes down one branch,'' with other branches becoming inaccessible.
-
-\textbf{Shell framework}: Reality is a \textit{convergent network}. Plurality exists from the outset as the spatial extent of the boundary manifold (horizon). Each boundary point undergoes geometric convergence onto dominant configurations, but these convergences remain coupled through open-system dynamics and shared parameter space.
-
-\paragraph{Relational Nature of Measurement}
-
-Ontological plurality in our framework is fundamentally \textit{relational} rather than absolute. There is no single privileged ``real world''---instead, reality consists of a network of boundary points, each undergoing convergence onto locally dominant configurations.
-
-\textbf{Key features}:
-\begin{itemize}
-\item \textbf{Local convergence}: Each boundary point experiences its own convergence event, yielding a genuine local ``present moment''
-\item \textbf{Persistent coupling}: These convergences are not causally isolated---they remain coupled through:
-\begin{itemize}
-\item Open-system dynamics: $\Gamma_{k,k'} = \frac{2\nu}{\hbar}|E_k - E_{k'}|$
-\item Shared parameter space: All points sample from the same thimble homology
-\item Boltzmann weighting: Same thermal factors $e^{-\beta E_k}$ everywhere
-\end{itemize}
-\item \textbf{Constrained but not determined}: The observed outcome at one boundary point constrains but does not determine outcomes at other boundary points
-\item \textbf{Emergent consistency}: Global consistency emerges from the geometric structure: all boundary points sample from the same configuration space, weighted by the same measure
-\end{itemize}
-
-\paragraph{Comparison with Foundational Positions}
+\subsubsection{Comparison with Foundational Positions}
 
 This relational structure differs fundamentally from all standard interpretations:
 
-\textbf{vs. Many-Worlds Interpretation}:
+\paragraph{vs. Many-Worlds Interpretation}
+
 \begin{itemize}
 \item No divergence into causally isolated branches
 \item Plurality exists spatially (across boundary manifold), not temporally (through splitting)
 \item Each ``world'' (boundary point) remains aware of others through coupling $\Gamma_{k,k'}$
 \end{itemize}
 
-\textbf{vs. Copenhagen Interpretation}:
+\paragraph{vs. Copenhagen Interpretation}
+
 \begin{itemize}
 \item No need for ``observers'' or ``measurement apparatus'' as primitive concepts
 \item Convergence occurs at every boundary point as geometric necessity, not triggered by macroscopic systems
 \item No fundamental distinction between quantum and classical---just difference in which shells dominate
 \end{itemize}
 
-\textbf{vs. Solipsism} (single observer perspective):
+\paragraph{vs. Solipsism} (single observer perspective)
+
 \begin{itemize}
 \item Your experience is real but not unique
 \item Other boundary points undergo equally real convergences
@@ -966,23 +913,32 @@ This relational structure differs fundamentally from all standard interpretation
 \item Communication between observers occurs through the coupled dynamics
 \end{itemize}
 
-\paragraph{The Mechanism of Plurality}
+\subsubsection{Why This Explains Measurement}
 
-The question is not \textit{whether} plurality exists (all non-Copenhagen interpretations accept this) but \textit{how} it arises:
+MWI cannot explain why you observe particular outcome---it only says ``you're in a branch.'' Our framework provides geometric mechanism:
 
-\textbf{MWI answer}: Through divergence. One becomes many via temporal splitting.
+\paragraph{You observe outcome $O_i$ because:}
 
-\textbf{Our answer}: Through convergence distribution. Many (boundary points) each select from the same menu (thimble homology), yielding consistent but not identical outcomes.
+\begin{enumerate}
+\item Your boundary location undergoes convergence
+\item Path integral at your location converges onto thimble $\mathcal{J}_i$ that minimizes dissipation
+\item Boltzmann and phase weighting: $w_i \propto e^{-\beta E_i}$ exponentially favors $\mathcal{J}_i$
+\item Decoherence suppresses other thimbles at rate $\Gamma \sim \nu|E_i - E_j|$
+\end{enumerate}
 
-Consider an analogy: Rather than one tree splitting into many branches (MWI), imagine many independent trees growing from the same seed stock. Each tree develops uniquely based on local conditions, but all share the same genetic blueprint (configuration space structure). The trees remain connected underground (inter-shell coupling) even as they express different phenotypes above ground (observed outcomes).
+This is not ``you're in one universe''---it's ``you're at one convergence point in a network of ontologically real but coupled convergences.''
 
-\paragraph{Implications for Observers}
+\subsubsection{Implications for Observers}
 
 An observer at boundary point $\mathbf{x}_0$ experiences:
+
 \begin{enumerate}
 \item \textbf{Local reality}: Convergence onto shell $\mathcal{S}_0$ with probability $P_0 = e^{-2\beta E_0}$
+
 \item \textbf{Awareness of alternatives}: Through decoherence with rate $\Gamma_{0,k}$, they experience suppression of shells $k > 0$
+
 \item \textbf{Communication with others}: Signal propagation between boundary points occurs through the dominant shell
+
 \item \textbf{Consistency with others}: All observers sample from the same underlying structure, ensuring intersubjective agreement
 \end{enumerate}
 
@@ -991,6 +947,7 @@ The observer does not ``choose a branch'' (MWI) nor ``collapse the wavefunction'
 \paragraph{Why Measurements Agree}
 
 Different observers achieve consistent results not because they're in the same ``branch'' but because:
+
 \begin{enumerate}
 \item They sample from the same configuration space structure
 \item The dominant shell $\mathcal{S}_0$ has overwhelming weight everywhere: $e^{-2\beta E_0} \gg e^{-2\beta E_k}$ for $k > 0$
@@ -998,7 +955,33 @@ Different observers achieve consistent results not because they're in the same `
 \item The geometric selection is deterministic given $\beta, \nu, E_k$---all observers use the same parameters
 \end{enumerate}
 
-This is relationalism without relativism: outcomes are relational (depend on observer location) but not arbitrary (constrained by shared geometric structure).
+This is \textit{relationalism without relativism}: outcomes are relational (depend on observer location) but not arbitrary (constrained by shared geometric structure).
+
+\subsubsection{Testable Distinction}
+
+The question is not \textit{whether} plurality exists (all non-Copenhagen interpretations accept this) but \textit{how} it arises:
+
+\begin{itemize}
+\item \textbf{MWI answer}: Through divergence. One becomes many via temporal splitting.
+\item \textbf{Our answer}: Through convergence distribution. Many (boundary points) each select from the same menu (thimble homology), yielding consistent but not identical outcomes.
+\end{itemize}
+
+\paragraph{Analogy}
+
+Rather than one tree splitting into many branches (MWI), imagine many independent trees growing from the same seed stock. Each tree develops uniquely based on local conditions, but all share the same genetic blueprint (configuration space structure). The trees remain connected underground (inter-shell coupling) even as they express different phenotypes above ground (observed outcomes).
+
+\paragraph{Experimental Predictions}
+
+\textbf{MWI predicts}: Branches are causally isolated (no way to detect other branches)
+
+\textbf{Our framework predicts}: Convergences are coupled (signatures of coupling detectable):
+\begin{itemize}
+\item Nested interference patterns from multiple shell contributions before convergence
+\item Energy-dependent decoherence rates revealing coupling structure
+\item Parameter-dependent shifts in dominant thimble (Stokes crossings)
+\end{itemize}
+
+The plurality is not in question---both frameworks have it. The question is: divergent branches or convergent network? The experimental signatures differ qualitatively.
 
 \subsection{Double-Slit Interference from Multiple Shells}
 
@@ -1059,41 +1042,6 @@ where $\pm$ depends on shell-dependent phase factors.
 \subsubsection{Observational Signature}
 
 This predicts anomalous bunching/anti-bunching in multi-particle interferometry at specific energy scales corresponding to shell transitions.
-\subsubsection{Recursive Self-Reference and the Origin of $|\psi|^2$}
-
-The Born probability $P_k \propto |w_k|^2 = e^{-2\beta E_k}$ exhibits a profound recursive structure. The squaring arises not from an arbitrary axiom but from the wavefunction's self-interaction as it navigates configuration space.
-
-\textbf{Geometric picture}: Consider the complex amplitude $w_k = e^{-\beta E_k} e^{i\theta_k}$ associated with thimble $J_k$. In the complexified configuration space, this amplitude represents:
-\begin{itemize}
-\item \textbf{Forward evolution}: $e^{i\theta_k}$ phase accumulation along the thimble
-\item \textbf{Dissipation}: $e^{-\beta E_k}$ suppression from coupling to other shells
-\end{itemize}
-
-The probability $P_k = |w_k|^2$ can be understood as the amplitude's self-intersection:
-
-\begin{equation}
-P_k = w_k \cdot \bar{w}_k = e^{-\beta E_k} e^{i\theta_k} \cdot e^{-\beta E_k} e^{-i\theta_k} = e^{-2\beta E_k}
-\end{equation}
-
-\textbf{Physical interpretation}: As the boundary configuration evolves through complexified space, different portions of the total amplitude find new intersections. Each intersection point contributes $w_k \bar{w}_{k'}$. When $k = k'$ (self-intersection along the same thimble), the phases cancel and only the Boltzmann suppression survives—doubled because both "incoming" and "outgoing" amplitudes contribute dissipation.
-
-\textbf{Connection to Noether's theorem}: The phase cancellation $e^{i\theta_k} e^{-i\theta_k} = 1$ reflects conservation of the quantity conjugate to the monodromy parameter. Specifically:
-\begin{itemize}
-\item The rotation angle $\nu$ generates monodromy with conserved angular momentum $L$
-\item The thermal parameter $\beta$ conjugates to energy $E$
-\item Self-intersection occurs along axes of symmetry where conserved quantities match
-\end{itemize}
-
-This connects to the Noether current:
-\begin{equation}
-J^\mu = \frac{\partial \mathcal{L}}{\partial(\partial_\mu \phi)} \delta \phi - K^\mu
-\end{equation}
-
-For the monodromy transformation $\phi \to e^{i\nu E t} \phi$, the conserved charge is precisely the energy $E$ that labels our shells. The self-intersection formula $P_k = |w_k|^2$ thus reflects the geometric requirement that probability concentrates where the symmetry-generated flow closes on itself.
-
-\textbf{Recursive structure}: The Born rule contains a kind of self-reference: the probability of a configuration depends on how strongly that configuration selects itself through geometric convergence. Higher energy shells are suppressed not because they are "less real" but because their self-intersection strength (convergence weight) is geometrically diminished by the factor $e^{-2\beta E_k}$.
-
-This explains why measurement "collapses" to definite outcomes: configurations with strong self-intersection (low $E_k$) naturally dominate, while high-energy configurations contribute but are geometrically suppressed. The wavefunction doesn't collapse onto these outcomes—rather, these outcomes represent the fixed points of the self-intersection dynamics in configuration space.
 
 \section{Structural Implications}
 
@@ -1109,17 +1057,80 @@ This suggests a geometric distinction between:
 
 The Stokes crossing dynamics indicate that ``inaccessibility'' is parameter-dependent rather than absolute. Configurations that contribute negligibly under one parametrization can become dominant under another—the system's effective ``memory'' is encoded in its full homological structure, not merely its current dominant contributions.
 
-\subsection{Recursive Self-Reference}
+\subsection{Configuration Space as Memory Structure}
 
-The complexified configuration space, when organized via energy-labeled thimbles, exhibits a form of structural self-reference: the action $S$ that defines the thimbles depends on the same field configurations that flow along them. In the open-system steady state, this creates a self-consistent structure where:
+The complexified configuration space, when organized via energy-labeled thimbles, exhibits geometric memory: past convergences remain encoded as subdominant thimbles in the full homological structure. The system's effective ``memory'' is thus not stored in current field values but in the thimble topology itself.
 
-\begin{enumerate}
-\item The system's dynamics determine which configurations contribute
-\item These contributing configurations feed back to define the dynamics
-\item The steady state represents a fixed point of this recursion
-\end{enumerate}
+This structural encoding has several important features:
 
-This recursive structure, combined with the non-exhaustion of collapse space, suggests that the geometry of possibility is not merely a mathematical artifact but encodes meaningful relationships between past, present, and potential configurations.
+\paragraph{Parameter-Dependent Recall}
+
+Stokes crossings (Section 3.5.2) enable accessing past states not through temporal reversal but through parameter navigation. Configurations that contributed negligibly under one parametrization $(\beta_1, \nu_1, E_k)$ can become dominant under another $(\beta_2, \nu_2, E_k)$. The ``past'' is therefore not absolutely inaccessible but relatively inaccessible---contingent on control parameters.
+
+This suggests a radical reinterpretation of temporal asymmetry: what we call ``past'' may be better understood as ``currently subdominant configurations.'' The arrow of time emerges not from fundamental time-reversal asymmetry but from the Boltzmann weighting that makes certain thimbles observationally dominant at given parameter values.
+
+\paragraph{Topological Robustness}
+
+Unlike dynamical memory (stored in field values that degrade through decoherence), topological memory persists as homology class structure. Environmental perturbations may shift which thimbles dominate but cannot erase the thimble structure itself. This provides robust encoding: the past remains geometrically present even when observationally suppressed.
+
+The distinction is crucial:
+\begin{itemize}
+\item \textbf{Dynamical persistence}: Information in current field configuration (decays exponentially with decoherence time $\sim 1/\Gamma$)
+\item \textbf{Topological persistence}: Information in thimble homology (survives as long as action's critical point structure persists)
+\end{itemize}
+
+This topological robustness explains why certain ``memories'' of past states (e.g., initial conditions encoded in cosmological structure) persist far longer than naive decoherence estimates would suggest.
+
+\paragraph{Distributed Structure}
+
+No single location in configuration space ``stores'' past states. Rather, the full thimble decomposition collectively encodes history. This distributed character means information about past configurations is non-local---it exists in the relationships between thimbles (Stokes data, intersection numbers) rather than in any particular configuration.
+
+Mathematically, the ``memory content'' is captured by:
+\begin{equation}
+\mathcal{M} = \{(\mathcal{J}_\sigma, n_\sigma, S_\sigma) : \sigma \in \text{Crit}\}
+\end{equation}
+where $\mathcal{J}_\sigma$ are thimbles, $n_\sigma$ are intersection numbers, and $S_\sigma$ are critical actions. A complete description requires specifying not just individual thimbles but their mutual relationships (which ones intersect, how Stokes transitions connect them, etc.).
+
+\paragraph{Distinction from Ergodic Loss}
+
+Standard statistical mechanics distinguishes between:
+\begin{itemize}
+\item \textbf{Ergodic loss}: Information scrambled throughout phase space but preserved in ensemble
+\item \textbf{True loss}: Information leaves system entirely (dissipation)
+\end{itemize}
+
+Our framework introduces a third category:
+\begin{itemize}
+\item \textbf{Structural persistence}: Information geometrically encoded in thimble topology, accessible via parameter control
+\end{itemize}
+
+Past configurations are neither ergodically scrambled nor truly lost---they persist as accessible topological features whose observational weight depends on parameters.
+
+\paragraph{Practical Implications}
+
+This structural view of memory suggests novel approaches to information retrieval:
+
+\textbf{Conventional approach} (dynamical): To access past state, reverse dynamics (time-reversal symmetry, unitary evolution). Fundamentally limited by decoherence---information genuinely lost after decoherence time.
+
+\textbf{Geometric approach} (structural): To access past state, navigate parameter space to Stokes surface where subdominant thimble becomes dominant. Not limited by decoherence time---only by ability to control parameters $(\beta, \nu, E_k)$ with sufficient precision.
+
+The feasibility depends on:
+\begin{equation}
+\delta\beta \cdot \delta\nu \cdot \delta E_k \lesssim \frac{\hbar}{\Delta S}
+\end{equation}
+where $\Delta S$ is action difference between critical points. For macroscopic systems ($\Delta S \gg \hbar$), this requires extraordinary parameter control. But for microscopic systems or specially engineered configurations, it may be achievable.
+
+\paragraph{Connection to Quantum Information}
+
+This perspective relates to recent developments in quantum information theory:
+
+\textbf{Quantum error correction}: Information redundantly encoded across multiple subsystems. Our thimble structure provides \textit{geometric} redundancy---same information encoded across homology classes.
+
+\textbf{Topological quantum computing}: Information stored in non-local topological features, robust against local perturbations. Our framework suggests configuration space itself exhibits this character, independent of specific qubit implementations.
+
+\textbf{Black hole information paradox}: Information apparently lost to black hole may persist in thimble structure of horizon boundary fluid. Hawking radiation could carry subtle correlations encoding this structural information.
+
+This has implications for fundamental questions about time's arrow, the nature of memory, and the possibility of accessing past states through geometric rather than dynamical means.
 
 \subsection{Implications for Measurement and Observation}
 
@@ -1331,19 +1342,65 @@ While the shell model provides qualitative resolution (suppression factor), prec
 \item Possible dynamical selection mechanism for observable shell
 \end{itemize}
 
-\subsection{Implications for Quantum Foundations}
+\subsubsection{Shell Spacing from Boundary Physics}
 
-The experimental discriminability of shell structure from standard decoherence mechanisms has broader implications for quantum foundations. If confirmed, it would demonstrate that:
+The cosmological constant resolution outlined in Theorem 2 requires quantitative prediction of the shell spacing $\Lambda$. While we have shown that observable vacuum energy concentrates in the dominant shell $S_0$ with higher shells contributing negligibly, the magnitude of suppression depends critically on $\Lambda$. Rather than treating $\Lambda$ as a free parameter, we now derive it from boundary fluid properties, connecting microscopic dissipation physics to cosmological-scale structure.
 
-\begin{enumerate}
-\item \textbf{Geometric properties of configuration space are measurable}: The parameter $\nu$ would constitute direct experimental access to the monodromy structure arising from signature emergence, connecting abstract mathematical topology to laboratory observables.
+\textbf{Setup}: At the stretched horizon, boundary fluid has:
+\begin{itemize}
+\item Viscosity: $\nu$ (kinematic)
+\item Rotation rate: $\Omega_H$ (horizon angular velocity)
+\item Surface gravity: $\kappa = 1/(4M)$ for Schwarzschild, $\kappa = \kappa(a,M)$ for Kerr
+\item Temperature: $T_H = \kappa/(2\pi)$, so $\beta = 2\pi/\kappa$
+\end{itemize}
 
-\item \textbf{Decoherence has geometric and environmental components}: The separation of $\nu$ (intrinsic) from $\Gamma_0$ (extrinsic) suggests that quantum-to-classical transitions involve both fundamental configuration-space structure and contingent environmental coupling.
+\textbf{Shell energy scale}: The ground shell $\mathcal{S}_0$ should have characteristic energy set by thermal scale:
+$$E_0 \sim k_B T_H = \frac{\kappa}{2\pi}$$
 
-\item \textbf{Quantum measurement is not purely environmental}: Standard decoherence theories attribute classicality entirely to environmental entanglement. Shell structure implies an additional geometric mechanism---convergence onto dominant thimbles---that operates even in the limit of vanishing environmental coupling.
-\end{enumerate}
+For Schwarzschild black hole: $\kappa = 1/(4M)$, giving $E_0 \sim 1/(8\pi M)$.
 
-These conclusions, if validated, would require revising the standard narrative that decoherence is ``purely environmental'' and suggest instead a hybrid picture: environmental coupling determines \textit{rates} ($\Gamma_0$), while configuration-space geometry determines \textit{selection rules} ($\nu$ and shell structure).
+\textbf{Shell spacing}: The ratio $\Lambda = E_{k+1}/E_k$ should relate to dissipation structure. From Navier-Stokes mapping, the imaginary potential scales as:
+$$\bar{V}_I \sim \nu \Omega_H^2$$
+
+The shell spacing emerges from how this dissipation organizes thimbles. Configurations separated by energy $\Delta E$ decohere at rate:
+$$\Gamma \sim \nu \Delta E$$
+
+For shells to be well-separated (decohere before inter-shell transitions), require:
+$$\Gamma_{k,k+1} \cdot \tau_\text{thermal} \gtrsim 1$$
+where $\tau_\text{thermal} = \beta$ is thermal timescale.
+
+This gives:
+$$\nu E_0 (\Lambda - 1) \cdot \beta \gtrsim 1$$
+
+Solving for $\Lambda$:
+$$\Lambda \gtrsim 1 + \frac{1}{\nu \beta E_0}$$
+
+For Kerr black hole, $\nu$ relates to horizon properties. Near extremal rotation ($a \to M$), viscosity bound gives $\nu \sim \ell_\text{Planck}^2$. Using $\beta \sim M$ and $E_0 \sim 1/M$:
+$$\Lambda \sim 1 + \ell_\text{Planck}^2 M^2 \sim 1 + (M/M_\text{Planck})^2$$
+
+\textbf{Application to vacuum energy}:
+
+For cosmological-scale structure, if observable universe corresponds to ground shell of structure at Hubble scale $R_H \sim 10^{28}$ cm:
+$$\Lambda \sim (R_H/\ell_\text{Planck})^2 \sim 10^{122}$$
+
+The ratio of modes in $\mathcal{S}_0$ to total:
+$$\frac{N_{\mathcal{S}_0}}{N_\text{total}} \sim \frac{1}{\Lambda} \sim 10^{-122}$$
+
+This gives vacuum energy suppression:
+$$\frac{\rho_\text{obs}}{\rho_\text{naive}} \sim 10^{-122}$$
+
+matching the observed discrepancy to within order of magnitude.
+
+\textbf{Limitations}: This derivation assumes:
+\begin{itemize}
+\item Observable universe corresponds to black hole boundary at Hubble scale (speculative)
+\item Shell structure scales from microscopic (Planck) to cosmological (Hubble)
+\item Single dominant shell dominates vacuum energy
+\end{itemize}
+
+More rigorous derivation requires understanding cosmological boundary structure and how shell spacing scales across energy ranges. Nevertheless, this demonstrates that shell spacing $\Lambda \sim 10^{122}$ emerges naturally from boundary dissipation physics at cosmological scales, rather than being tuned by hand.
+
+\textbf{Testable implication}: If shell spacing relates to dissipation, then environments with different effective viscosity should show different shell structures. Laboratory tests manipulating dissipation in quantum systems could probe this relationship at accessible scales.
 
 \subsubsection{Experimental Tests}
 
@@ -1571,6 +1628,20 @@ The key discriminating feature is the \textit{differential response}: shell stru
 \caption{\textbf{Experimental discrimination between shell structure and standard decoherence.} Simulated transmon measurements across 12 runs with varying environmental conditions. \textbf{Top row (a-c)}: Shell structure scenario showing stable $\nu$ (3.8\% variation) despite significant $\Gamma_0$ fluctuations (30\%). No correlation between parameters ($r = -0.24$, $p = 0.45$). \textbf{Bottom row (d-f)}: Standard Ohmic bath scenario where both $\nu$ and $\Gamma_0$ respond to bath variations. The differential stability provides a clear experimental signature: geometric coupling yields parameter independence, while environmental coupling produces coordinated variation.}
 \label{fig:experimental_discrimination}
 \end{figure}
+
+\subsection{Implications for Quantum Foundations}
+
+The experimental discriminability of shell structure from standard decoherence mechanisms has broader implications for quantum foundations. If confirmed, it would demonstrate that:
+
+\begin{enumerate}
+\item \textbf{Geometric properties of configuration space are measurable}: The parameter $\nu$ would constitute direct experimental access to the monodromy structure arising from signature emergence, connecting abstract mathematical topology to laboratory observables.
+
+\item \textbf{Decoherence has geometric and environmental components}: The separation of $\nu$ (intrinsic) from $\Gamma_0$ (extrinsic) suggests that quantum-to-classical transitions involve both fundamental configuration-space structure and contingent environmental coupling.
+
+\item \textbf{Quantum measurement is not purely environmental}: Standard decoherence theories attribute classicality entirely to environmental entanglement. Shell structure implies an additional geometric mechanism---convergence onto dominant thimbles---that operates even in the limit of vanishing environmental coupling.
+\end{enumerate}
+
+These conclusions, if validated, would require revising the standard narrative that decoherence is ``purely environmental'' and suggest instead a hybrid picture: environmental coupling determines \textit{rates} ($\Gamma_0$), while configuration-space geometry determines \textit{selection rules} ($\nu$ and shell structure).
 
 \subsection{Philosophical Implications}
 
