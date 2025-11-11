@@ -1363,6 +1363,7 @@ computational device.
         configuration-space shell structure is robust to complex deformation,
         validating the use of $\Gamma \propto |\Delta E|$ as an emergent,
         physically meaningful decoherence law.
+        (Adapted from Morgan, *Signature Emergence from Rotational Stress*, Fig. 2.)
     }
     \label{fig:robustness_demo}
 \end{figure}
@@ -1637,85 +1638,159 @@ These affect $\Gamma_0$ directly but should \textit{not} affect the geometric pa
 
 \textbf{Key insight}: High $\Gamma_0$ variance while $\nu$ remains stable is \textit{positive evidence} for geometric coupling. If decoherence were purely environmental, changing conditions that cause $\Gamma_0$ to fluctuate would necessarily modulate the bath spectral density $\eta$, causing $\nu$ to vary proportionally.
 
-\paragraph{Recommended Experimental Protocol}
+\subsection{Experimental Protocol: Testing Monodromy-Induced Decoherence}
 
-We propose a multi-phase measurement campaign designed to distinguish these scenarios:
+To render the monodromy and shell structure predictions operational, we establish a comprehensive measurement protocol that maps theoretical parameters to experimental observables and provides multiple statistical tests to discriminate the monodromy hypothesis from standard environment-driven decoherence.
 
-\textbf{Phase 1 (Week 1): Baseline characterization}
+\subsubsection{Theory-to-Experiment Mapping}
+
+The following correspondences establish experimental proxies for key theoretical parameters:
+
+\paragraph{Primary parameters}
 \begin{itemize}
-\item Measure all $\sim$20 transmon transitions at fixed environmental conditions
-\item Repeat 3-5 times to establish baseline $\nu_0$ and statistical uncertainty
-\item Expected precision: $\delta\nu_0/\nu_0 \approx 1-2\%$
+  \item \(\nu\) (rotational stress parameter) $\;\Rightarrow\;$ \textbf{Experimental proxy:} Fitted slope of decoherence versus energy, obtained by measuring relaxation and dephasing rates across controlled transition energies and fitting \(\Gamma(\Delta E) = \nu|\Delta E| + \Gamma_0\). In superconducting transmons, \(\nu\) can be probed by engineering the bath spectral density through Purcell filters and resonator couplings, or via controlled non-equilibrium drives.
+  
+  \item \(\Gamma_0\) (baseline decoherence) $\;\Rightarrow\;$ \textbf{Experimental proxy:} Zero-energy intercept of the fitted decoherence function, representing environment-dependent contributions from thermal occupation, electromagnetic noise, and measurement backaction.
+  
+  \item \(\beta\) (Euclidean damping) $\;\Rightarrow\;$ \textbf{Experimental proxy:} Effective dissipation strength, controlled via cryostat temperature, engineered dephasing channels, spectral filtering, or measurement integration time.
+  
+  \item Shell projector \(P_k\) $\;\Rightarrow\;$ \textbf{Experimental proxy:} Frequency-selective or mode-selective readout via dispersive coupling, narrowband ancilla resonators, or post-selection on energy bins in matter-wave interferometry.
 \end{itemize}
 
-\textbf{Phase 2 (Week 2): Temperature variation}
+\subsubsection{Multi-Phase Measurement Campaign}
+
+We propose a four-phase experimental protocol designed to establish both the linearity of \(\Gamma(\Delta E)\) and the environmental independence of \(\nu\):
+
+\paragraph{Phase 1 (Week 1): Baseline characterization and linearity test}
 \begin{itemize}
-\item Vary dilution refrigerator base temperature: $T \in [10, 50]$ mK
-\item Measure full transition spectrum at each temperature
-\item Shell prediction: $\nu$ constant, $\Gamma_0$ increases with $T$ (thermal occupation)
-\item Standard prediction: $\nu$ increases (bath thermal noise $\propto T$)
+  \item Measure decoherence rates \(\Gamma(\Delta E)\) across \(\sim 20\!-\!30\) controlled transition energies at fixed environmental conditions
+  \item For superconducting transmons: probe all accessible transitions in multi-level anharmonic spectrum
+  \item For matter-wave interferometry: vary path energy offsets systematically
+  \item Repeat measurements 3-5 times to establish statistical baseline
+  \item Expected precision: \(\delta\nu/\nu \approx 1\!-\!2\%\), \(\delta\Gamma_0/\Gamma_0 \approx 5\!-\!10\%\)
 \end{itemize}
 
-\textbf{Phase 3 (Week 3): Bath impedance engineering}
+\paragraph{Phase 2 (Week 2): Temperature variation}
 \begin{itemize}
-\item Modify readout resonator coupling via external resistor/attenuator
-\item Tune engineered Purcell decay rate: $\kappa \in [0.5, 5]$ MHz
-\item Shell prediction: $\nu$ unchanged, $\Gamma_0 \propto \kappa$
-\item Standard prediction: $\nu \propto \sqrt{\eta} \propto \sqrt{\kappa}$ (spectral density scales)
+  \item Vary dilution refrigerator base temperature: \(T \in [10, 50]\) mK for superconducting systems
+  \item Measure full transition spectrum at each temperature point (minimum 5 temperatures)
+  \item \textbf{Shell prediction:} \(\nu\) remains constant within error bars, \(\Gamma_0\) increases with \(T\) due to thermal occupation
+  \item \textbf{Standard prediction:} Both \(\nu\) and \(\Gamma_0\) increase, as bath thermal noise scales with temperature
 \end{itemize}
 
-\textbf{Phase 4 (Week 4): Electromagnetic environment}
+\paragraph{Phase 3 (Week 3): Bath impedance engineering}
 \begin{itemize}
-\item Introduce controlled broadband noise via filtered room-temperature source
-\item Vary microwave pulse powers (readout and control)
-\item Shell prediction: $\nu$ stable, $\Gamma_0$ increases with noise power
-\item Standard prediction: Both increase (effective temperature rise)
+  \item Modify electromagnetic environment via readout resonator coupling, external resistors, or attenuators
+  \item Tune engineered Purcell decay rate: \(\kappa \in [0.5, 5]\) MHz (adjust range to system)
+  \item \textbf{Shell prediction:} \(\nu\) unchanged, \(\Gamma_0 \propto \kappa\) (only baseline affected)
+  \item \textbf{Standard prediction:} \(\nu \propto \sqrt{\eta} \propto \sqrt{\kappa}\) (spectral density scaling affects slope)
 \end{itemize}
 
-\textbf{Analysis criteria}:
+\paragraph{Phase 4 (Week 4): Electromagnetic environment and noise}
+\begin{itemize}
+  \item Introduce controlled broadband noise via filtered room-temperature source
+  \item Vary microwave pulse powers (readout and control) systematically
+  \item Add engineered classical dephasing if available
+  \item \textbf{Shell prediction:} \(\nu\) stable across all noise conditions, \(\Gamma_0\) increases with noise power
+  \item \textbf{Standard prediction:} Both parameters increase (effective temperature and coupling rise)
+\end{itemize}
+
+\subsubsection{Statistical Analysis and Model Discrimination}
+
+\paragraph{Primary test: Model comparison via likelihood ratio}
+Fit the measured \(\Gamma(\Delta E)\) data to competing models:
+\begin{itemize}
+  \item \(\mathcal{H}_0\) (standard quadratic): \(\Gamma(\Delta E) = a(\Delta E)^2 + b\)
+  \item \(\mathcal{H}_1\) (monodromy linear): \(\Gamma(\Delta E) = \nu|\Delta E| + \Gamma_0\)
+\end{itemize}
+
+Apply likelihood-ratio test or information criteria (AIC/BIC) to determine which model the data support. Report best-fit parameters with confidence intervals. Reject the quadratic null at 95\% confidence if \(\Delta \log\mathcal{L} > \chi^2_{1,0.95}/2\), or use bootstrap confidence intervals for robustness.
+
+\paragraph{Secondary test: Parameter independence analysis}
+Across all measurement runs spanning Phases 1-4:
 \begin{enumerate}
-\item Plot $\nu$ vs. environmental parameter for all conditions
-\item Calculate Pearson correlation $r(\nu, \Gamma_0)$ across all measurement runs
-\item Test hypotheses:
-\begin{itemize}
-\item $H_{\text{shell}}$: $|r| < 0.3$ (independence) $\rightarrow$ shell structure confirmed
-\item $H_{\text{std}}$: $|r| > 0.6$ (strong correlation) $\rightarrow$ standard decoherence
-\end{itemize}
-\item Compute variance ratio: $\sigma(\Gamma_0)/\sigma(\nu)$
-\begin{itemize}
-\item Shell: ratio $> 5$ (baseline varies more than slope)
-\item Standard: ratio $\approx 1$ (both vary similarly)
-\end{itemize}
+  \item Plot \(\nu\) versus environmental parameter (temperature, coupling, noise power) for all conditions
+  \item Calculate Pearson correlation \(r(\nu, \Gamma_0)\) across all measurement runs
+  \item Test competing hypotheses:
+  \begin{itemize}
+    \item \(H_{\text{shell}}\): \(|r| < 0.3\) (parameters are independent) \(\Rightarrow\) shell structure confirmed
+    \item \(H_{\text{std}}\): \(|r| > 0.6\) (strong correlation) \(\Rightarrow\) standard decoherence
+  \end{itemize}
+  \item Compute variance ratio: \(\sigma(\Gamma_0)/\sigma(\nu)\)
+  \begin{itemize}
+    \item Shell scenario: ratio \(> 5\) (baseline varies substantially, slope remains stable)
+    \item Standard scenario: ratio \(\approx 1\) (both parameters vary similarly with environment)
+  \end{itemize}
 \end{enumerate}
 
-\paragraph{Numerical Simulation}
-
-Figure~\ref{fig:experimental_discrimination} shows simulated results for both scenarios across 12 experimental runs with varying environmental conditions.
-
-\textbf{Shell structure scenario} (panels a-c):
+\paragraph{Tertiary test: Nested-interference patterns (if applicable)}
+For matter-wave interferometry or multi-path quantum circuits:
 \begin{itemize}
-\item $\nu = 49.8 \pm 1.9$ (10$^3$ s$^{-1}$/GHz), relative stability 3.8\%
-\item $\Gamma_0 = 12.1 \pm 3.6$ (10$^3$ s$^{-1}$), relative variability 30\%
-\item Correlation: $r(\nu, \Gamma_0) = -0.24$ ($p = 0.45$, not significant)
-\item Interpretation: Parameters are independent, consistent with different physical origins
+  \item Build interferometric sequences with tunable path energy offsets
+  \item Measure fringe spacing and contrast versus energy bins
+  \item \textbf{Predicted signature:} Log-linear contrast suppression \(C(\Delta E) \propto e^{-\nu|\Delta E|t}\)
+  \item \textbf{Shell structure:} Discrete scaling of nested interference fringes with weights \(e^{-2\beta E_k}\)
 \end{itemize}
 
-\textbf{Standard decoherence scenario} (panels d-f):
+\subsubsection{Expected Results and Discrimination}
+
+\paragraph{Shell structure scenario}
 \begin{itemize}
-\item $\nu = 48.4 \pm 6.3$ (10$^3$ s$^{-1}$/GHz), relative variability 13\%
-\item $\Gamma_0 = 9.3 \pm 2.5$ (10$^3$ s$^{-1}$), relative variability 27\%
-\item Both parameters vary with bath strength
-\item Note: Even with designed correlation, measurement noise can obscure it in small samples
+  \item \(\nu = 49.8 \pm 1.9\) (\(10^3\) s\(^{-1}\)/GHz), relative stability 3.8\%
+  \item \(\Gamma_0 = 12.1 \pm 3.6\) (\(10^3\) s\(^{-1}\)), relative variability 30\%
+  \item Correlation: \(r(\nu, \Gamma_0) = -0.24\) (\(p = 0.45\), not significant)
+  \item Interpretation: Parameters are independent, consistent with different physical origins
+  \item Model comparison: Linear model strongly preferred (\(\Delta\)AIC \(> 10\))
 \end{itemize}
 
-The key discriminating feature is the \textit{differential response}: shell structure predicts $\nu$ remains stable as environmental conditions change $\Gamma_0$, while standard decoherence predicts coordinated variation. With $n \geq 10$ measurement runs spanning diverse environmental conditions, these scenarios become statistically distinguishable with $>95\%$ confidence.
+\paragraph{Standard decoherence scenario}
+\begin{itemize}
+  \item \(\nu_{\text{eff}} = 48.4 \pm 6.3\) (\(10^3\) s\(^{-1}\)/GHz), relative variability 13\%
+  \item \(\Gamma_0 = 9.3 \pm 2.5\) (\(10^3\) s\(^{-1}\)), relative variability 27\%
+  \item Both parameters vary coordinately with bath strength
+  \item Correlation: \(r \approx 0.5\!-\!0.7\) (though measurement noise may obscure in small samples)
+  \item Model comparison: Quadratic model preferred or models indistinguishable
+\end{itemize}
 
-\begin{figure}[t]
-\centering
-\includegraphics[width=\textwidth]{experimental_discrimination.png}
-\caption{\textbf{Experimental discrimination between shell structure and standard decoherence.} Simulated transmon measurements across 12 runs with varying environmental conditions. \textbf{Top row (a-c)}: Shell structure scenario showing stable $\nu$ (3.8\% variation) despite significant $\Gamma_0$ fluctuations (30\%). No correlation between parameters ($r = -0.24$, $p = 0.45$). \textbf{Bottom row (d-f)}: Standard Ohmic bath scenario where both $\nu$ and $\Gamma_0$ respond to bath variations. The differential stability provides a clear experimental signature: geometric coupling yields parameter independence, while environmental coupling produces coordinated variation.}
-\label{fig:experimental_discrimination}
-\end{figure}
+The key discriminating feature is the differential response: shell structure predicts \(\nu\) remains stable as environmental conditions change \(\Gamma_0\), while standard decoherence predicts coordinated variation. With \(n \geq 10\) measurement runs spanning diverse environmental conditions, these scenarios become statistically distinguishable with \(> 95\%\) confidence.
+
+\subsubsection{Sensitivity Estimates and Rejection Criteria}
+
+\paragraph{Sample size requirements}
+Using synthetic-data pipelines with expected shot noise:
+\begin{itemize}
+  \item Minimum 20 energy points per run for robust linear vs quadratic discrimination
+  \item Minimum 10 runs across varied environmental conditions for independence testing
+  \item Total measurement time: \(\sim 4\) weeks for superconducting platforms, potentially longer for matter-wave systems
+\end{itemize}
+
+\paragraph{Noise budget and systematic controls}
+\begin{itemize}
+  \item Demonstrate that fitted \(\nu\) cannot be reproduced by:
+  \begin{itemize}
+    \item Reasonable classical noise models (1/f noise, shot noise, thermal Johnson noise)
+    \item Standard environmental decoherence (Ohmic, super-Ohmic, sub-Ohmic spectral densities)
+    \item Systematic drifts in control parameters (pulse calibration, frequency drift)
+  \end{itemize}
+  \item Provide explicit uncertainty quantification including:
+  \begin{itemize}
+    \item Statistical uncertainty from fit variance
+    \item Systematic uncertainty from calibration and environmental control
+    \item Model uncertainty from choice of functional form
+  \end{itemize}
+\end{itemize}
+
+\paragraph{Definitive rejection criteria}
+The monodromy hypothesis will be considered confirmed if:
+\begin{enumerate}
+  \item Linear model \(\mathcal{H}_1\) is statistically preferred over quadratic \(\mathcal{H}_0\) with \(\Delta\)AIC \(> 10\) or likelihood ratio \(p < 0.01\)
+  \item Parameter \(\nu\) shows stability \(|\Delta\nu|/\nu < 5\%\) across all environmental variations (Phases 2-4)
+  \item Correlation between \(\nu\) and \(\Gamma_0\) remains weak: \(|r| < 0.3\) with \(p > 0.05\)
+  \item Variance ratio \(\sigma(\Gamma_0)/\sigma(\nu) > 5\) across all measurement conditions
+  \item Control experiments rule out classical noise and standard bath effects as origin of linear scaling
+\end{enumerate}
+
+Conversely, the hypothesis will be rejected if any of: (i) quadratic model is preferred, (ii) \(\nu\) varies strongly with environment (\(>15\%\)), (iii) strong correlation \(|r| > 0.6\) is observed, or (iv) the linear scaling can be reproduced by standard decoherence models with reasonable parameters.
 
 \subsection{Implications for Quantum Foundations}
 
