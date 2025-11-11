@@ -1491,163 +1491,22 @@ More rigorous derivation requires understanding cosmological boundary structure 
 
 \textbf{Testable implication}: If shell spacing relates to dissipation, then environments with different effective viscosity should show different shell structures. Laboratory tests manipulating dissipation in quantum systems could probe this relationship at accessible scales.
 
-\subsubsection{Experimental Tests}
+% Merged Experimental Section
+% This replaces both section 7.2.3 "Experimental Tests" and section 7.3 "Experimental Protocol"
+% Start at line 1494, replace through line 1808
 
-We propose three classes of experiments to test the convergent shell framework:
+\subsection{Experimental Tests of Shell Structure}
 
-\textbf{1. Multi-scale electron interferometry}
+We propose a comprehensive experimental program to test the shell framework across multiple platforms, combining systematic decoherence spectroscopy with complementary interferometric and weak measurement tests.
 
-\textit{Setup}: Double-slit experiment with electrons at variable energies, high-resolution position detection.
+\subsubsection{Primary Protocol: Transmon Decoherence Spectroscopy}
 
-\textit{Prediction}: Nested interference patterns with fringe spacing $\Delta y_k = \Delta y_0/\Lambda^{k/2}$ and visibility $\mathcal{V}_k = \exp(-2\beta E_k)$. Specifically:
-\begin{itemize}
-\item Primary fringes from shell $\mathcal{S}_0$: spacing $\Delta y_0 \sim \lambda_0 L/d$ where $\lambda_0 = h/\sqrt{2mE_0}$
-\item Secondary fine structure from $\mathcal{S}_1$: spacing $\Delta y_1 = \Delta y_0/\Lambda^{1/2}$, visibility suppressed by $e^{-2\beta E_0 \Lambda}$
-\item Continue for higher shells with exponentially decreasing visibility
-\end{itemize}
+The most direct test involves measuring energy-dependent decoherence rates in multi-level quantum systems. Superconducting transmon qubits provide an ideal platform due to their accessible energy spectrum, precise control, and well-characterized decoherence mechanisms.
 
-\textit{Control}: MWI predicts simple superposition (no nested structure). Copenhagen predicts single fringe pattern (no fine structure). Our framework uniquely predicts nested hierarchy.
-
-\textit{Feasibility}: Electron microscopy routinely achieves sub-nanometer resolution. Detecting secondary fringes requires visibility $\mathcal{V}_1 \gtrsim 0.01$, achievable with $\beta E_0 \Lambda \lesssim 2$. For $E_0 \sim 1$ eV, $\Lambda \sim 10$, requires $\beta \sim 0.2$ eV$^{-1}$ (room temperature). \textbf{Immediately testable}.
-
-\textit{Systematic errors}: Vibration, detector resolution, source coherence length. All controllable with modern equipment. Key requirement: high dynamic range detector (must resolve $\mathcal{V}_0 \sim 1$ and $\mathcal{V}_1 \sim 0.01$ simultaneously).
-
-\textbf{2. Energy-dependent decoherence spectroscopy}
-
-\textit{Setup}: Superconducting transmon qubit (multi-level system) at variable temperatures, measure $T_2$ (decoherence time) for different energy level transitions.
-
-\textit{Prediction}: Decoherence rate between levels $n$ and $m$ scales as:
-$$\Gamma_{n,m} = \nu |E_n - E_m|$$
-For adjacent levels in shell $k$: $\Gamma_k \propto E_k$. Should see linear scaling of decoherence rate with energy.
-
-\textit{Control}: Standard decoherence theory predicts various scalings (Ohmic: $\Gamma \propto \omega$; super-Ohmic: $\Gamma \propto \omega^3$; etc.) depending on bath. Our framework predicts specific form related to dissipation parameter $\nu$.
-
-\textit{Feasibility}: Transmon qubits with 5-10 levels well-characterized. $T_2$ measurements routine. Temperature control enables varying $\beta$. \textbf{Testable within ~6 months in existing labs}.
-
-\textit{Key signature}: Measure $\Gamma(E_n - E_m)$ for multiple transitions. Fit to $\Gamma = \nu |\Delta E| + \Gamma_0$ where $\Gamma_0$ is background. Extract $\nu$, check consistency across all transitions. Shell framework predicts universal $\nu$ independent of which levels measured.
-
-\textbf{3. Weak measurement of shell contributions}
-
-\textit{Setup}: Weak measurement protocol that partially reveals "which shell" without full decoherence. Based on weak values $\langle \psi_f | \hat{P}_k | \psi_i \rangle / \langle \psi_f | \psi_i \rangle$ where $\hat{P}_k$ projects onto shell $k$.
-
-\textit{Prediction}: Before strong measurement (convergence), weak measurement should detect contributions from multiple shells with weights $e^{-\beta E_k}$. After strong measurement, only dominant shell contributes.
-
-\textit{Protocol}:
-\begin{enumerate}
-\item Prepare state $|\psi_i\rangle$ with support across multiple shells
-\item Weak measurement: couple shell projector $\hat{P}_k$ to meter with weak coupling $\epsilon \ll 1$
-\item Measure meter, extract weak value (reveals shell $k$ contribution)
-\item Repeat for different $k$, reconstruct shell distribution
-\item Strong measurement: project onto energy eigenstate
-\item Compare pre/post strong measurement shell distributions
-\end{enumerate}
-
-\textit{Feasibility}: Weak measurement established technique (Aharonov et al.). Applied successfully to photonic, atomic, solid-state systems. Requires: (1) tunable coupling to different energy levels (shell selector), (2) high-resolution meter. Both achievable. \textbf{Testable within 1-2 years}.
-
-\textit{Distinctive prediction}: Our framework predicts \textit{convergence} onto dominant shell during strong measurement. Should see shell distribution sharpen from $P_k \propto e^{-\beta E_k}$ (pre-measurement) to $P_0 \approx 1$, $P_{k>0} \approx 0$ (post-measurement). MWI predicts branching (no convergence). Copenhagen offers no prediction for weak values during "collapse."
-
-\textbf{Summary of experimental program}:
-
-All three experiments leverage existing technology. Conservative timeline:
-\begin{itemize}
-\item Multi-scale interferometry: 6-12 months (most straightforward)
-\item Decoherence spectroscopy: 6-18 months (requires systematic measurements)
-\item Weak measurement protocol: 12-24 months (most technically demanding)
-\end{itemize}
-
-Together, these tests would:
-\begin{itemize}
-\item Confirm nested shell structure (test 1)
-\item Verify energy-dependent convergence rates (test 2)
-\item Directly observe convergence process (test 3)
-\end{itemize}
-
-Null results would falsify the framework; positive results would distinguish it from MWI/Copenhagen decisively.
-
-\paragraph{Numerical Demonstration}
-
-\begin{figure}[h]
-\centering
-\includegraphics[width=0.8\textwidth]{transmon_decoherence_fit.png}
-\caption{Synthetic transmon decoherence data demonstrating feasibility of extracting monodromy parameters. Left panel shows linear scaling $\Gamma = \nu|\Delta E| + \Gamma_0$ with fitted slope $\nu = 51.2 \times 10^3$ s$^{-1}$/GHz and baseline $\Gamma_0 = 7.5 \times 10^3$ s$^{-1}$. Right panel shows fit residuals with $\chi^2/$dof $= 0.68$, indicating excellent agreement. Measurement noise (5\% relative uncertainty) is characteristic of state-of-the-art superconducting systems. The linear model's goodness-of-fit demonstrates that monodromy parameters can be reliably extracted from realistic experimental data.}
-\label{fig:transmon_fit}
-\end{figure}
-
-Figure~\ref{fig:transmon_fit} demonstrates the experimental feasibility using synthetic data with realistic noise levels. The key takeaway is that the slope parameter $\nu$ is recoverable with high precision ($\sim$3\%) despite significant baseline uncertainty ($\sim$50-100\%), because the slope is determined by the energy dependence across the measurement range rather than extrapolation to zero energy. This differential precision is itself diagnostic: shell structure predicts stable $\nu$ with variable $\Gamma_0$, while standard decoherence predicts both parameters varying together.
-
-\textbf{Experimental recommendation}: Focus on measuring the slope $\nu$ rather than absolute decoherence rates. The shell framework's signature is the \textit{scaling} $\Gamma \propto |\Delta E|$, which is robust against systematic offsets in $\Gamma_0$.
-
-\textbf{Control test}: Vary bath spectral density (engineered impedance) and verify that fitted $\nu$ remains constant. If $\nu$ changes with bath engineering, this indicates standard Ohmic decoherence rather than intrinsic shell structure.
-
-\subsubsection{Discriminating Shell Structure from Standard Decoherence}
-
-The linear scaling $\Gamma = \nu|\Delta E| + \Gamma_0$ could, in principle, arise from two distinct mechanisms: intrinsic shell structure (geometric) or standard Ohmic bath coupling (environmental). We demonstrate that these scenarios make qualitatively different predictions for how $\nu$ and $\Gamma_0$ respond to environmental variations.
-
-\paragraph{Standard Open Quantum Systems Prediction}
-
-In the Born-Markov-Lindblad framework for a system coupled to an Ohmic bath with spectral density $J(\omega) = \eta\omega$, the decoherence rate between energy levels $|n\rangle$ and $|m\rangle$ is \cite{BreuerPetruccione}:
-\begin{equation}
-\Gamma_{nm}^{\text{std}} = \pi \eta |\omega_{nm}| \coth\left(\frac{\beta\omega_{nm}}{2}\right) + \Gamma_0^{\text{env}}
-\label{eq:standard_decoherence}
-\end{equation}
-where $\eta$ is the bath coupling strength (determined by impedance, substrate dielectric loss, etc.), $\omega_{nm} = (E_n - E_m)/\hbar$, $\beta = 1/(k_B T)$, and $\Gamma_0^{\text{env}}$ captures low-frequency environmental noise.
-
-\textbf{Critical feature}: In standard theory, \textit{both} the slope $\nu \propto \eta$ and the baseline $\Gamma_0^{\text{env}}$ depend on bath parameters. Changing environmental conditions---temperature, electromagnetic shielding, readout impedance---modulates the spectral density strength $\eta$, causing $\nu$ and $\Gamma_0$ to co-vary. Typical correlations: $r(\nu, \Gamma_0) > 0.6$ \cite{Zurek2003}.
-
-\paragraph{Shell Structure Prediction}
-
-Our framework predicts fundamentally different behavior. The slope parameter:
-\begin{equation}
-\nu = \frac{2}{\hbar}\text{Im}(\overline{V_I})
-\label{eq:shell_nu}
-\end{equation}
-encodes the rotation-induced monodromy structure---a \textit{geometric} property of configuration space arising from the signature emergence mechanism. It should remain invariant under environmental changes that only affect external bath coupling.
-
-The baseline $\Gamma_0$, conversely, captures environmental noise sources (charge fluctuations, photon loss, magnetic flux noise) that add constant offsets to all decoherence rates. These \textit{should} vary significantly with experimental conditions.
-
-\textbf{Discriminating signature}: Shell structure predicts:
-\begin{itemize}
-\item $\nu$ stability: $\delta\nu/\nu \lesssim 5\%$ across environmental variations
-\item $\Gamma_0$ variability: $\delta\Gamma_0/\Gamma_0 \sim 30-100\%$
-\item Low correlation: $|r(\nu, \Gamma_0)| < 0.3$
-\end{itemize}
-
-Standard decoherence predicts:
-\begin{itemize}
-\item Both parameters vary together: $\delta\nu/\nu \sim \delta\Gamma_0/\Gamma_0$
-\item Strong correlation: $|r(\nu, \Gamma_0)| > 0.6$
-\end{itemize}
-
-\paragraph{Statistical Interpretation of Baseline Variance}
-
-The large relative uncertainty in fitted $\Gamma_0$ (typically 10-100\%) compared to $\nu$ (1-5\%) arises from two sources:
-
-\textbf{(1) Extrapolation geometry}: Measurements span transition frequencies $\Delta E \in [0.5, 5]$ GHz, but $\Gamma_0$ is the intercept at $\Delta E = 0$. For a linear fit $y = ax + b$, the intercept uncertainty scales as:
-\begin{equation}
-\text{Var}(b) = \sigma^2 \left[\frac{1}{n} + \frac{\bar{x}^2}{\sum_i (x_i - \bar{x})^2}\right]
-\end{equation}
-where the $\bar{x}^2$ term amplifies uncertainty when extrapolating far from the data range.
-
-\textbf{(2) Environmental fluctuations}: Real transmon systems experience run-to-run variations in:
-\begin{itemize}
-\item Substrate temperature drift ($\sim$mK)
-\item Ambient electromagnetic noise
-\item Charge trap occupancy (two-level systems)
-\item Quasiparticle density
-\end{itemize}
-These affect $\Gamma_0$ directly but should \textit{not} affect the geometric parameter $\nu$ if shell structure is correct.
-
-\textbf{Key insight}: High $\Gamma_0$ variance while $\nu$ remains stable is \textit{positive evidence} for geometric coupling. If decoherence were purely environmental, changing conditions that cause $\Gamma_0$ to fluctuate would necessarily modulate the bath spectral density $\eta$, causing $\nu$ to vary proportionally.
-
-\subsection{Experimental Protocol: Testing Monodromy-Induced Decoherence}
-
-To render the monodromy and shell structure predictions operational, we establish a comprehensive measurement protocol that maps theoretical parameters to experimental observables and provides multiple statistical tests to discriminate the monodromy hypothesis from standard environment-driven decoherence.
-
-\subsubsection{Theory-to-Experiment Mapping}
+\paragraph{Theory-to-Experiment Mapping}
 
 The following correspondences establish experimental proxies for key theoretical parameters:
 
-\paragraph{Primary parameters}
 \begin{itemize}
   \item \(\nu\) (rotational stress parameter) $\;\Rightarrow\;$ \textbf{Experimental proxy:} Fitted slope of decoherence versus energy, obtained by measuring relaxation and dephasing rates across controlled transition energies and fitting \(\Gamma(\Delta E) = \nu|\Delta E| + \Gamma_0\). In superconducting transmons, \(\nu\) can be probed by engineering the bath spectral density through Purcell filters and resonator couplings, or via controlled non-equilibrium drives.
   
@@ -1658,20 +1517,19 @@ The following correspondences establish experimental proxies for key theoretical
   \item Shell projector \(P_k\) $\;\Rightarrow\;$ \textbf{Experimental proxy:} Frequency-selective or mode-selective readout via dispersive coupling, narrowband ancilla resonators, or post-selection on energy bins in matter-wave interferometry.
 \end{itemize}
 
-\subsubsection{Multi-Phase Measurement Campaign}
+\paragraph{Multi-Phase Measurement Campaign}
 
 We propose a four-phase experimental protocol designed to establish both the linearity of \(\Gamma(\Delta E)\) and the environmental independence of \(\nu\):
 
-\paragraph{Phase 1 (Week 1): Baseline characterization and linearity test}
+\textbf{Phase 1 (Week 1): Baseline characterization and linearity test}
 \begin{itemize}
   \item Measure decoherence rates \(\Gamma(\Delta E)\) across \(\sim 20\!-\!30\) controlled transition energies at fixed environmental conditions
   \item For superconducting transmons: probe all accessible transitions in multi-level anharmonic spectrum
-  \item For matter-wave interferometry: vary path energy offsets systematically
   \item Repeat measurements 3-5 times to establish statistical baseline
   \item Expected precision: \(\delta\nu/\nu \approx 1\!-\!2\%\), \(\delta\Gamma_0/\Gamma_0 \approx 5\!-\!10\%\)
 \end{itemize}
 
-\paragraph{Phase 2 (Week 2): Temperature variation}
+\textbf{Phase 2 (Week 2): Temperature variation}
 \begin{itemize}
   \item Vary dilution refrigerator base temperature: \(T \in [10, 50]\) mK for superconducting systems
   \item Measure full transition spectrum at each temperature point (minimum 5 temperatures)
@@ -1679,7 +1537,7 @@ We propose a four-phase experimental protocol designed to establish both the lin
   \item \textbf{Standard prediction:} Both \(\nu\) and \(\Gamma_0\) increase, as bath thermal noise scales with temperature
 \end{itemize}
 
-\paragraph{Phase 3 (Week 3): Bath impedance engineering}
+\textbf{Phase 3 (Week 3): Bath impedance engineering}
 \begin{itemize}
   \item Modify electromagnetic environment via readout resonator coupling, external resistors, or attenuators
   \item Tune engineered Purcell decay rate: \(\kappa \in [0.5, 5]\) MHz (adjust range to system)
@@ -1687,7 +1545,7 @@ We propose a four-phase experimental protocol designed to establish both the lin
   \item \textbf{Standard prediction:} \(\nu \propto \sqrt{\eta} \propto \sqrt{\kappa}\) (spectral density scaling affects slope)
 \end{itemize}
 
-\paragraph{Phase 4 (Week 4): Electromagnetic environment and noise}
+\textbf{Phase 4 (Week 4): Electromagnetic environment and noise}
 \begin{itemize}
   \item Introduce controlled broadband noise via filtered room-temperature source
   \item Vary microwave pulse powers (readout and control) systematically
@@ -1696,10 +1554,9 @@ We propose a four-phase experimental protocol designed to establish both the lin
   \item \textbf{Standard prediction:} Both parameters increase (effective temperature and coupling rise)
 \end{itemize}
 
-\subsubsection{Statistical Analysis and Model Discrimination}
+\paragraph{Statistical Analysis and Model Discrimination}
 
-\paragraph{Primary test: Model comparison via likelihood ratio}
-Fit the measured \(\Gamma(\Delta E)\) data to competing models:
+\textit{Primary test: Model comparison via likelihood ratio.} Fit the measured \(\Gamma(\Delta E)\) data to competing models:
 \begin{itemize}
   \item \(\mathcal{H}_0\) (standard quadratic): \(\Gamma(\Delta E) = a(\Delta E)^2 + b\)
   \item \(\mathcal{H}_1\) (monodromy linear): \(\Gamma(\Delta E) = \nu|\Delta E| + \Gamma_0\)
@@ -1707,8 +1564,7 @@ Fit the measured \(\Gamma(\Delta E)\) data to competing models:
 
 Apply likelihood-ratio test or information criteria (AIC/BIC) to determine which model the data support. Report best-fit parameters with confidence intervals. Reject the quadratic null at 95\% confidence if \(\Delta \log\mathcal{L} > \chi^2_{1,0.95}/2\), or use bootstrap confidence intervals for robustness.
 
-\paragraph{Secondary test: Parameter independence analysis}
-Across all measurement runs spanning Phases 1-4:
+\textit{Secondary test: Parameter independence analysis.} Across all measurement runs spanning Phases 1-4:
 \begin{enumerate}
   \item Plot \(\nu\) versus environmental parameter (temperature, coupling, noise power) for all conditions
   \item Calculate Pearson correlation \(r(\nu, \Gamma_0)\) across all measurement runs
@@ -1724,18 +1580,11 @@ Across all measurement runs spanning Phases 1-4:
   \end{itemize}
 \end{enumerate}
 
-\paragraph{Tertiary test: Nested-interference patterns (if applicable)}
-For matter-wave interferometry or multi-path quantum circuits:
-\begin{itemize}
-  \item Build interferometric sequences with tunable path energy offsets
-  \item Measure fringe spacing and contrast versus energy bins
-  \item \textbf{Predicted signature:} Log-linear contrast suppression \(C(\Delta E) \propto e^{-\nu|\Delta E|t}\)
-  \item \textbf{Shell structure:} Discrete scaling of nested interference fringes with weights \(e^{-2\beta E_k}\)
-\end{itemize}
+\paragraph{Expected Results and Discrimination}
 
-\subsubsection{Expected Results and Discrimination}
+The key discriminating feature is the differential response: shell structure predicts \(\nu\) remains stable as environmental conditions change \(\Gamma_0\), while standard decoherence predicts coordinated variation.
 
-\paragraph{Shell structure scenario}
+\textit{Shell structure scenario:}
 \begin{itemize}
   \item \(\nu = 49.8 \pm 1.9\) (\(10^3\) s\(^{-1}\)/GHz), relative stability 3.8\%
   \item \(\Gamma_0 = 12.1 \pm 3.6\) (\(10^3\) s\(^{-1}\)), relative variability 30\%
@@ -1744,7 +1593,7 @@ For matter-wave interferometry or multi-path quantum circuits:
   \item Model comparison: Linear model strongly preferred (\(\Delta\)AIC \(> 10\))
 \end{itemize}
 
-\paragraph{Standard decoherence scenario}
+\textit{Standard decoherence scenario:}
 \begin{itemize}
   \item \(\nu_{\text{eff}} = 48.4 \pm 6.3\) (\(10^3\) s\(^{-1}\)/GHz), relative variability 13\%
   \item \(\Gamma_0 = 9.3 \pm 2.5\) (\(10^3\) s\(^{-1}\)), relative variability 27\%
@@ -1753,36 +1602,53 @@ For matter-wave interferometry or multi-path quantum circuits:
   \item Model comparison: Quadratic model preferred or models indistinguishable
 \end{itemize}
 
-The key discriminating feature is the differential response: shell structure predicts \(\nu\) remains stable as environmental conditions change \(\Gamma_0\), while standard decoherence predicts coordinated variation. With \(n \geq 10\) measurement runs spanning diverse environmental conditions, these scenarios become statistically distinguishable with \(> 95\%\) confidence.
+With \(n \geq 10\) measurement runs spanning diverse environmental conditions, these scenarios become statistically distinguishable with \(> 95\%\) confidence.
 
-\subsubsection{Sensitivity Estimates and Rejection Criteria}
+\paragraph{Numerical Demonstration}
 
-\paragraph{Sample size requirements}
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.8\textwidth]{transmon_decoherence_fit.png}
+\caption{Synthetic transmon decoherence data demonstrating feasibility of extracting monodromy parameters. Left panel shows linear scaling $\Gamma = \nu|\Delta E| + \Gamma_0$ with fitted slope $\nu = 51.2 \times 10^3$ s$^{-1}$/GHz and baseline $\Gamma_0 = 7.5 \times 10^3$ s$^{-1}$. Right panel shows fit residuals with $\chi^2/$dof $= 0.68$, indicating excellent agreement. Measurement noise (5\% relative uncertainty) is characteristic of state-of-the-art superconducting systems. The linear model's goodness-of-fit demonstrates that monodromy parameters can be reliably extracted from realistic experimental data.}
+\label{fig:transmon_fit}
+\end{figure}
+
+Figure~\ref{fig:transmon_fit} demonstrates the experimental feasibility using synthetic data with realistic noise levels. The key takeaway is that the slope parameter $\nu$ is recoverable with high precision ($\sim$3\%) despite significant baseline uncertainty ($\sim$50-100\%), because the slope is determined by the energy dependence across the measurement range rather than extrapolation to zero energy. This differential precision is itself diagnostic: shell structure predicts stable $\nu$ with variable $\Gamma_0$, while standard decoherence predicts both parameters varying together.
+
+\paragraph{Discriminating Shell Structure from Standard Decoherence}
+
+The linear scaling $\Gamma = \nu|\Delta E| + \Gamma_0$ could, in principle, arise from two distinct mechanisms: intrinsic shell structure (geometric) or standard Ohmic bath coupling (environmental). These scenarios make qualitatively different predictions for how $\nu$ and $\Gamma_0$ respond to environmental variations.
+
+\textit{Standard Open Quantum Systems Prediction.} In the Born-Markov-Lindblad framework for a system coupled to an Ohmic bath with spectral density $J(\omega) = \eta\omega$, the decoherence rate between energy levels $|n\rangle$ and $|m\rangle$ is \cite{BreuerPetruccione}:
+\begin{equation}
+\Gamma_{nm}^{\text{std}} = \pi \eta |\omega_{nm}| \coth\left(\frac{\beta\omega_{nm}}{2}\right) + \Gamma_0^{\text{env}}
+\label{eq:standard_decoherence}
+\end{equation}
+where $\eta$ is the bath coupling strength (determined by impedance, substrate dielectric loss, etc.), $\omega_{nm} = (E_n - E_m)/\hbar$, $\beta = 1/(k_B T)$, and $\Gamma_0^{\text{env}}$ captures low-frequency environmental noise.
+
+\textbf{Critical feature}: In standard theory, \textit{both} the slope $\nu \propto \eta$ and the baseline $\Gamma_0^{\text{env}}$ depend on bath parameters. Changing environmental conditions---temperature, electromagnetic shielding, readout impedance---modulates the spectral density strength $\eta$, causing $\nu$ and $\Gamma_0$ to co-vary. Typical correlations: $r(\nu, \Gamma_0) > 0.6$ \cite{Zurek2003}.
+
+\textit{Shell Structure Prediction.} Our framework predicts fundamentally different behavior. The slope parameter:
+\begin{equation}
+\nu = \frac{2}{\hbar}\text{Im}(\overline{V_I})
+\label{eq:shell_nu}
+\end{equation}
+encodes the rotation-induced monodromy structure---a \textit{geometric} property of configuration space arising from the signature emergence mechanism. It should remain invariant under environmental changes that only affect external bath coupling.
+
+The baseline $\Gamma_0$, conversely, captures environmental noise sources (charge fluctuations, photon loss, magnetic flux noise) that add constant offsets to all decoherence rates. These \textit{should} vary significantly with experimental conditions.
+
+\textbf{Key insight}: High $\Gamma_0$ variance while $\nu$ remains stable is \textit{positive evidence} for geometric coupling. If decoherence were purely environmental, changing conditions that cause $\Gamma_0$ to fluctuate would necessarily modulate the bath spectral density $\eta$, causing $\nu$ to vary proportionally.
+
+\paragraph{Sensitivity Estimates and Rejection Criteria}
+
 Using synthetic-data pipelines with expected shot noise:
 \begin{itemize}
   \item Minimum 20 energy points per run for robust linear vs quadratic discrimination
   \item Minimum 10 runs across varied environmental conditions for independence testing
-  \item Total measurement time: \(\sim 4\) weeks for superconducting platforms, potentially longer for matter-wave systems
+  \item Total measurement time: \(\sim 4\) weeks for superconducting platforms
 \end{itemize}
 
-\paragraph{Noise budget and systematic controls}
-\begin{itemize}
-  \item Demonstrate that fitted \(\nu\) cannot be reproduced by:
-  \begin{itemize}
-    \item Reasonable classical noise models (1/f noise, shot noise, thermal Johnson noise)
-    \item Standard environmental decoherence (Ohmic, super-Ohmic, sub-Ohmic spectral densities)
-    \item Systematic drifts in control parameters (pulse calibration, frequency drift)
-  \end{itemize}
-  \item Provide explicit uncertainty quantification including:
-  \begin{itemize}
-    \item Statistical uncertainty from fit variance
-    \item Systematic uncertainty from calibration and environmental control
-    \item Model uncertainty from choice of functional form
-  \end{itemize}
-\end{itemize}
-
-\paragraph{Definitive rejection criteria}
-The monodromy hypothesis will be considered confirmed if:
+\textbf{Definitive rejection criteria.} The monodromy hypothesis will be considered confirmed if:
 \begin{enumerate}
   \item Linear model \(\mathcal{H}_1\) is statistically preferred over quadratic \(\mathcal{H}_0\) with \(\Delta\)AIC \(> 10\) or likelihood ratio \(p < 0.01\)
   \item Parameter \(\nu\) shows stability \(|\Delta\nu|/\nu < 5\%\) across all environmental variations (Phases 2-4)
@@ -1792,6 +1658,62 @@ The monodromy hypothesis will be considered confirmed if:
 \end{enumerate}
 
 Conversely, the hypothesis will be rejected if any of: (i) quadratic model is preferred, (ii) \(\nu\) varies strongly with environment (\(>15\%\)), (iii) strong correlation \(|r| > 0.6\) is observed, or (iv) the linear scaling can be reproduced by standard decoherence models with reasonable parameters.
+
+\textbf{Feasibility and Timeline}: Transmon qubits with 5-10 levels are well-characterized, $T_2$ measurements are routine, and temperature control enables varying $\beta$. \textbf{This protocol is testable within 4-6 months in existing superconducting qubit laboratories}.
+
+\subsubsection{Complementary Test: Matter-Wave Interferometry}
+
+While transmon decoherence spectroscopy provides the most direct test of energy-dependent decoherence rates, matter-wave interferometry offers a complementary probe of nested shell structure through spatial interference patterns.
+
+\textbf{Setup}: Double-slit experiment with electrons (or other matter waves) at variable energies, with high-resolution position detection.
+
+\textbf{Prediction}: Nested interference patterns with fringe spacing $\Delta y_k = \Delta y_0/\Lambda^{k/2}$ and visibility $\mathcal{V}_k = \exp(-2\beta E_k)$. Specifically:
+\begin{itemize}
+\item Primary fringes from shell $\mathcal{S}_0$: spacing $\Delta y_0 \sim \lambda_0 L/d$ where $\lambda_0 = h/\sqrt{2mE_0}$
+\item Secondary fine structure from $\mathcal{S}_1$: spacing $\Delta y_1 = \Delta y_0/\Lambda^{1/2}$, visibility suppressed by $e^{-2\beta E_0 \Lambda}$
+\item Continue for higher shells with exponentially decreasing visibility
+\end{itemize}
+
+\textbf{Distinctive signature}: MWI predicts simple superposition (no nested structure). Copenhagen predicts single fringe pattern (no fine structure). Our framework uniquely predicts nested hierarchy with exponentially suppressed higher-order fringes.
+
+\textbf{Feasibility}: Electron microscopy routinely achieves sub-nanometer resolution. Detecting secondary fringes requires visibility $\mathcal{V}_1 \gtrsim 0.01$, achievable with $\beta E_0 \Lambda \lesssim 2$. For $E_0 \sim 1$ eV, $\Lambda \sim 10$, requires $\beta \sim 0.2$ eV$^{-1}$ (room temperature). The primary challenge is achieving sufficient dynamic range to simultaneously resolve both dominant ($\mathcal{V}_0 \sim 1$) and subdominant ($\mathcal{V}_1 \sim 0.01$) fringes.
+
+This test provides geometric confirmation of shell structure independent of decoherence rate measurements, strengthening the overall experimental case.
+
+\subsubsection{Advanced Test: Weak Measurement of Shell Contributions}
+
+For systems with sufficient control, weak measurement protocols enable direct observation of the convergence process itself---probing shell populations before and after strong measurement.
+
+\textbf{Concept}: Weak measurement protocol that partially reveals "which shell" without full decoherence. Based on weak values $\langle \psi_f | \hat{P}_k | \psi_i \rangle / \langle \psi_f | \psi_i \rangle$ where $\hat{P}_k$ projects onto shell $k$.
+
+\textbf{Prediction}: Before strong measurement (convergence), weak measurement should detect contributions from multiple shells with weights $e^{-\beta E_k}$. After strong measurement, only dominant shell contributes. The framework predicts \textit{convergence} onto dominant shell during strong measurement: shell distribution should sharpen from $P_k \propto e^{-\beta E_k}$ (pre-measurement) to $P_0 \approx 1$, $P_{k>0} \approx 0$ (post-measurement).
+
+\textbf{Protocol}:
+\begin{enumerate}
+\item Prepare state $|\psi_i\rangle$ with support across multiple shells
+\item Weak measurement: couple shell projector $\hat{P}_k$ to meter with weak coupling $\epsilon \ll 1$
+\item Measure meter, extract weak value (reveals shell $k$ contribution)
+\item Repeat for different $k$, reconstruct shell distribution
+\item Strong measurement: project onto energy eigenstate
+\item Compare pre/post strong measurement shell distributions
+\end{enumerate}
+
+\textbf{Distinctive prediction}: MWI predicts branching (no convergence). Copenhagen offers no prediction for weak values during "collapse." Our framework uniquely predicts quantifiable convergence dynamics.
+
+\textbf{Feasibility}: Weak measurement is an established technique (Aharonov et al.) applied successfully to photonic, atomic, and solid-state systems. Requirements: (1) tunable coupling to different energy levels (shell selector), (2) high-resolution meter. Both are achievable with current technology. \textbf{Estimated timeline: 12-24 months for full protocol implementation}.
+
+\subsubsection{Summary of Experimental Program}
+
+Together, these three complementary approaches provide:
+\begin{enumerate}
+\item \textbf{Transmon decoherence spectroscopy (primary)}: Direct measurement of $\nu$ and its environmental independence, distinguishing geometric from environmental decoherence mechanisms (4-6 months)
+
+\item \textbf{Matter-wave interferometry (secondary)}: Geometric confirmation of nested shell structure through spatial interference patterns (6-12 months)
+
+\item \textbf{Weak measurement (advanced)}: Direct observation of convergence dynamics and shell population evolution (12-24 months)
+\end{enumerate}
+
+All three experiments leverage existing technology. Null results would falsify the framework; positive results would distinguish it from MWI and Copenhagen decisively, establishing shell structure as the physical basis for quantum convergence.
 
 \subsection{Implications for Quantum Foundations}
 
@@ -1806,7 +1728,6 @@ The experimental discriminability of shell structure from standard decoherence m
 \end{enumerate}
 
 These conclusions, if validated, would require revising the standard narrative that decoherence is ``purely environmental'' and suggest instead a hybrid picture: environmental coupling determines \textit{rates} ($\Gamma_0$), while configuration-space geometry determines \textit{selection rules} ($\nu$ and shell structure).
-
 \subsection{Philosophical Implications}
 
 \subsubsection{Realism About Mathematical Structures}
