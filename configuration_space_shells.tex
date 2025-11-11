@@ -1280,6 +1280,94 @@ The thimbles $\mathcal{J}_\sigma$ in our case correspond to different boundary f
 
 \textbf{Cristoforetti's contribution}: Applied thimble methods to lattice QCD at finite density, where complex fermion determinant causes severe sign problem. By deforming onto thimbles, they achieved convergent Monte Carlo sampling where standard methods fail completely. This demonstrated that thimbles are not just formal constructions but enable practical calculations.
 
+\subsection{Derivation of Energy-Dependent Decoherence}
+
+The damping term introduced by the complex deformation
+\[
+\mathcal{H} = (1 - i\nu)\, H_E
+\]
+naturally yields a linear dependence of the decoherence rate on energy separation.
+For two states of Euclidean energy difference $\Delta E$, the off-diagonal term of the
+reduced density matrix evolves as
+\begin{equation}
+\rho_{mn}(t) \;=\; \rho_{mn}(0)\,
+\exp\!\big[-i(1 - i\nu)\Delta E\, t\big]
+\;=\; \rho_{mn}(0)\, e^{-i\Delta E t}\, e^{-\nu|\Delta E|t},
+\end{equation}
+where $\nu$ is the rotational stress parameter introduced previously.
+The exponential decay term identifies the decoherence rate
+\begin{equation}
+\Gamma(\Delta E) \;=\; \nu\,|\Delta E|.
+\end{equation}
+Thus, coherence between shells separated by large energy gaps decays proportionally to the
+energetic separation itself, providing a quantitative prediction that distinguishes this
+framework from standard environment-driven (Markovian) decoherence, which typically yields
+$\Gamma \propto (\Delta E)^2$ under weak coupling.
+
+\subsection{Predicted Fringe Suppression}
+
+For nested interference experiments in which path energy differences are controllable,
+the predicted contrast of interference fringes follows
+\begin{equation}
+C(\Delta E) \;=\; C_0\, e^{-\nu|\Delta E|\,t},
+\end{equation}
+where $C_0$ is the ideal (fully coherent) contrast.
+This single-parameter decay law provides a direct empirical discriminator:
+a log-linear contrast curve would confirm the presence of linear,
+energy-proportional decoherence arising from the configuration-space
+rotational stress term.
+
+\subsection{Operational Definition of a Physical Shell}
+
+A configuration-space shell is \emph{physical} if its amplitude remains
+dynamically stable under the system’s effective decoherence functional
+for the relevant interaction timescale.
+Equivalently, a shell is physical when
+\[
+\frac{d}{dt}\|\psi_{\mathrm{shell}}\|^2 \approx 0
+\]
+under the reduced non-Hermitian evolution operator
+$\mathcal{H}_{\mathrm{eff}} = (1 - i\nu)H_E$.
+Unstable shells decay exponentially and correspond to virtual strata that
+mediate transitions but do not contribute directly to observable convergence.
+This definition renders physicality an operational property of robustness,
+not an ontological binary.
+
+\subsection{Relation to Existing Lefschetz-Thimble Formulations}
+
+Standard Picard–Lefschetz approaches treat thimbles as purely
+mathematical integration contours used to ensure convergence of complex
+path integrals.
+The present formulation departs from that view by interpreting thimbles
+as dynamically realized strata of configuration space—the physical
+``shells'' through which quantum amplitudes converge toward classical
+trajectories.
+This reinterpretation introduces measurable quantities such as
+$\Gamma(\Delta E)$ and $C(\Delta E)$, linking the analytic geometry of
+Lefschetz sectors to empirical decoherence phenomena.
+In doing so, it reframes the Lefschetz decomposition as a
+thermodynamically meaningful, testable structure rather than a
+computational device.
+
+\begin{figure}[t]
+    \centering
+    \includegraphics[width=0.8\linewidth]{ParameterSweep.png}
+    \caption{
+        \textbf{Numerical demonstration of configuration-space robustness.}
+        The spectrum of $\mathcal{M} = e^{-\beta(1 - i\nu)H_E}$ is plotted over
+        a grid of $(\nu,\beta)$ parameters.
+        Smooth variations of the eigenvalue distribution (left) and plateau
+        regions of the biorthogonal Berry curvature (right) identify stable,
+        topologically protected analytic thimbles.
+        These results provide quantitative confirmation that the
+        configuration-space shell structure is robust to complex deformation,
+        validating the use of $\Gamma \propto |\Delta E|$ as an emergent,
+        physically meaningful decoherence law.
+    }
+    \label{fig:robustness_demo}
+\end{figure}
+
+
 \subsubsection{Our Contribution}
 
 While Witten and Cristoforetti established the mathematical machinery and showed its utility for specific calculations, our contribution is threefold:
