@@ -1562,17 +1562,18 @@ Together, these tests would:
 \item Directly observe convergence process (test 3)
 \end{itemize}
 
-Null results would falsify framework; positive results would distinguish from MWI/Copenhagen decisively.
+Null results would falsify the framework; positive results would distinguish it from MWI/Copenhagen decisively.
 
-\textbf{Numerical Protocol and Expected Precision}
+\paragraph{Numerical Demonstration}
 
-Figure~\ref{fig:transmon_decoherence_fit.png} shows synthetic transmon decoherence data with measurement noise characteristic of state-of-the-art systems (5\% relative uncertainty). Linear fitting to $\Gamma = \nu|\Delta E| + \Gamma_0$ yields:
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.8\textwidth]{transmon_decoherence_fit.png}
+\caption{Synthetic transmon decoherence data demonstrating feasibility of extracting monodromy parameters. Left panel shows linear scaling $\Gamma = \nu|\Delta E| + \Gamma_0$ with fitted slope $\nu = 51.2 \times 10^3$ s$^{-1}$/GHz and baseline $\Gamma_0 = 7.5 \times 10^3$ s$^{-1}$. Right panel shows fit residuals with $\chi^2/$dof $= 0.68$, indicating excellent agreement. Measurement noise (5\% relative uncertainty) is characteristic of state-of-the-art superconducting systems. The linear model's goodness-of-fit demonstrates that monodromy parameters can be reliably extracted from realistic experimental data.}
+\label{fig:transmon_fit}
+\end{figure}
 
-\begin{itemize}
-\item Slope parameter $\nu$: recoverable to $\sim$3\% precision
-\item Baseline $\Gamma_0$: larger uncertainty ($\sim$50-100\%) due to extrapolation
-\item Statistical requirement: $n \geq 20$ transitions spanning factor $\sim$10 in energy
-\end{itemize}
+Figure~\ref{fig:transmon_fit} demonstrates the experimental feasibility using synthetic data with realistic noise levels. The key takeaway is that the slope parameter $\nu$ is recoverable with high precision ($\sim$3\%) despite significant baseline uncertainty ($\sim$50-100\%), because the slope is determined by the energy dependence across the measurement range rather than extrapolation to zero energy. This differential precision is itself diagnostic: shell structure predicts stable $\nu$ with variable $\Gamma_0$, while standard decoherence predicts both parameters varying together.
 
 \textbf{Experimental recommendation}: Focus on measuring the slope $\nu$ rather than absolute decoherence rates. The shell framework's signature is the \textit{scaling} $\Gamma \propto |\Delta E|$, which is robust against systematic offsets in $\Gamma_0$.
 
